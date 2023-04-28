@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 
 /*
@@ -8,8 +8,6 @@ import axios from 'axios';
 const API_URL = 'https://min-api.cryptocompare.com/data/pricemulti';
 
 function GET_API() {
-  const [data, setData] = useState({});
-
   useEffect(() => {
     axios.get(API_URL, {
       params: {

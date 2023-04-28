@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const API_KEY = 'ef000bc3-91f5-4280-9760-88837d1da118';
-const API_URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest';
+/*
+Делаю API запрос на сайт cryptocompare, чтобы получить актуальный курс криптовалют
+*/
+
+const API_URL = 'https://min-api.cryptocompare.com/data/pricemulti';
 
 function GET_API() {
   const [data, setData] = useState({});
@@ -10,26 +13,18 @@ function GET_API() {
   useEffect(() => {
     axios.get(API_URL, {
       params: {
-        symbol: 'BTC'
-      },
-      headers: {
-        'X-CMC_PRO_API_KEY': API_KEY
+        fsyms: 'BTC,ETH,LTC,BSW,CAKE',
+        tsyms: 'USD,RUB'
       }
     })
     .then(response => {
-      setData(response.data);
+      const data = response.data;
+      console.log(data);
     })
     .catch(error => {
       console.error(error);
     });
   }, []);
-
-  return (
-    <div>
-      <h1>Курс биткоина</h1>
-      <p>Цена: {data?.data?.BTC?.quote?.USD?.price}</p>
-    </div>
-  );
 }
 
 export default GET_API;

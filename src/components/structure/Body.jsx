@@ -33,7 +33,7 @@ export default function Body() {
 
   const renderTable = () => {
     return (
-  <div style={{ height: "550px", overflowY: "scroll" }}>
+  <div className='scrollable'>
     <table>
       <thead>
         <tr>

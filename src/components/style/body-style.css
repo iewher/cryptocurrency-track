@@ -24,6 +24,25 @@
     align-items: center;
     margin-left: 10px;
     margin-right: 10px;
+    font-size: 20px;
+}
+
+.scrollable {
+  height: 550px;
+  overflow-y: scroll;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
 }
 
 table {

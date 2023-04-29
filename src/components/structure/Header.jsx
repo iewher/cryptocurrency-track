@@ -1,7 +1,13 @@
-import React from 'react'
-import '../style/style.css'
+import React, { useState } from 'react'
+import '../style/header-style.css'
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className='Header'>
         <div className='name'>
@@ -16,9 +22,15 @@ export default function Header() {
           <input type='text' placeholder='Название монеты' className='search'></input>
         </div>
         <div className='settings'>
-          <button className='button-setting'>Setting</button>
+          <button className='button-setting' onClick={toggleMenu}>Setting</button>
+          {isOpen && (
+            <div className='dropdown-menu'>
+              {
+                <button>Профиль</button>
+              }
+            </div>
+          )}
         </div>
     </div>
   )
 }
-

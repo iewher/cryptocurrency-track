@@ -15,27 +15,77 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: green;
+    background: white;
 }
 
 .Header, .Body, .Bottom {
-    color: white;
+    background: white;
+    color: black;
     display: flex;
-    justify-content: center;
     align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 }
 
 .Header {
+    height: 8%;
+    justify-content: space-between;
+}
+.name, .settings {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-home, .button-top-100, .button-check, .button-setting {
+    margin-left: 15px;
+    margin-right: 15px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 145px;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.button-home:hover, .button-top-100:hover, .button-check:hover, .button-setting:hover {
+    width: 160px;
     background: black;
-    height: 10%;
+    color: white;
+}
+
+.search {
+    height: 50px;
+    width: 300px;
+    border-radius: 10px;
+    text-indent: 10px;
+    color: black;
+    border: 1px solid black;
+    transition: .3s;
+}
+
+.search:hover {
+    color: white;
+    background: black;
+    width: 315px;
 }
 
 .Body {
-    background: yellow;
-    height: 80%;
+    height: 78%;
+    justify-content: center;
 }
 
 .Bottom {
-    background: blue;
-    height: 10%
+    height: 8%;
+    justify-content: center;
 }

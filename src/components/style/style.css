@@ -18,7 +18,7 @@
     background: white;
 }
 
-.Header, .Body, .Bottom {
+.Header, .Bottom {
     background: white;
     color: black;
     display: flex;
@@ -34,6 +34,7 @@
     height: 8%;
     justify-content: space-between;
 }
+
 .name, .settings {
     margin-right: 15px;
     margin-left: 15px;
@@ -81,9 +82,55 @@
 }
 
 .Body {
-    height: 78%;
-    justify-content: center;
+    background: white;
+    color: black;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 }
+
+.Body {
+    height: 78%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-header {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+  }
+  
+  td:nth-child(4),
+  td:nth-child(5),
+  td:nth-child(6) {
+    text-align: center;
+  }
 
 .Bottom {
     height: 8%;

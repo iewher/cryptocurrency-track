@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Inter:wght@500&family=Poppins:wght@300&family=Ysabeau:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa';
+}
+
+.container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: green;
+}
+
+.Header, .Body, .Bottom {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header {
+    background: black;
+    height: 10%;
+}
+
+.Body {
+    background: yellow;
+    height: 80%;
+}
+
+.Bottom {
+    background: blue;
+    height: 10%
+}

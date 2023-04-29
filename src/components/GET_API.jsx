@@ -7,23 +7,24 @@ const INTERVAL_TIME = 1000;
 function GET_API() {
   const [data, setData] = useState({});
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetchData();
-    }, INTERVAL_TIME);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     fetchData();
+  //   }, INTERVAL_TIME);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const fetchData = () => {
     axios.get(API_URL, {
       params: {
         fsyms: 'BTC,ETH,LTC,BSW,CAKE',
-        tsyms: 'USD,RUB'
+        tsyms: 'USD'
       }
     })
     .then(response => {
       const data = response.data;
       setData(data);
+      console.log(data);
     })
     .catch(error => {
       console.error(error);

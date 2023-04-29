@@ -1,10 +1,15 @@
-import React from 'react'
-import GET_API from './components/GET_API'
+import React from 'react';
+import Header from './components/structure/Header';
+import Body from './components/structure/Body';
+import Bottom from './components/structure/Bottom';
+import './/components/style/style.css'
 
 function App() {
   return (
-    <div>
-      <GET_API />
+    <div className='container'>
+      <Header />
+      <Body />
+      <Bottom />
     </div>
   );
 }

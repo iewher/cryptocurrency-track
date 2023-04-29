@@ -36,12 +36,44 @@
 
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: 50;
     right: 0;
     background-color: white;
     padding: 1rem;
-    border: 1px solid black;
     display: block;
+    height: 25%;
+    width: 25%;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+    margin-right: 25px;
+    margin-top: 25px;
+    z-index: 1;
+}
+
+.dropdown-menu-buttons {
+    display: flex;
+    flex-direction: column; /* установите направление элементов в столбец */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.button-dropdown {
+    background: white;
+    color: black;
+    border: none;
+    font-size: 15px;
+    width: 100%;
+    height: 25%;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: .3s;
+}
+
+.button-dropdown:hover {
+    background: black;
+    color: white;
 }
 
 .search {

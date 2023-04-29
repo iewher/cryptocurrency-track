@@ -22,11 +22,16 @@ export default function Header() {
           <input type='text' placeholder='Название монеты' className='search'></input>
         </div>
         <div className='settings'>
-          <button className='button-setting' onClick={toggleMenu}>Setting</button>
+          <button className='button-setting' onClick={toggleMenu}>Log in</button>
           {isOpen && (
             <div className='dropdown-menu'>
               {
-                <button>Профиль</button>
+                <div className='dropdown-menu-buttons'>
+                  <button className='button-dropdown'>Профиль</button>
+                  <button className='button-dropdown'>Профиль</button>
+                  <button className='button-dropdown'>Профиль</button>
+                  <button className='button-dropdown'>Профиль</button>
+                </div>
               }
             </div>
           )}

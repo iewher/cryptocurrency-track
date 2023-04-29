@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../style/style.css';
+import '../style/body-style.css';
 
 const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
 const INTERVAL_TIME = 1000;

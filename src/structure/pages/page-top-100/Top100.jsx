@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../style/body-style.css';
+import './style/top-100-style.css';
+import Header from '../../../components/Header/Header'
+import Bottom from '../../../components/Bottom/Bottom'
 
 const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
 const INTERVAL_TIME = 1000;
 
-export default function Body() {
+export default function Top100() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -63,11 +65,15 @@ export default function Body() {
   };
 
   return (
-    <div className='Body'>
-      <div className='body-header'>Топ-100 криптовалют</div>
-      <div className='table'>
-      {data.length > 0 ? renderTable() : <p>Loading...</p>}
+    <div className='block'>
+      <Header />
+      <div className='Body'>
+        <div className='body-header'>Топ-100 криптовалют</div>
+        <div className='table'>
+          {data.length > 0 ? renderTable() : <p>Loading...</p>}
+        </div>
       </div>
+      <Bottom />
     </div>
   );
 }

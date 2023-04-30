@@ -1,5 +1,5 @@
 import React from 'react'
-import '../style/bottom-style.css'
+import './style/bottom-style.css'
 
 export default function Bottom() {
   return (

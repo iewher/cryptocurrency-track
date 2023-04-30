@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import './style/header-style.css'
+import Search from '../Search/Search'
 
 import Home from '../../structure/pages/page-home/Home'
 import Top100 from '../../structure/pages/page-top-100/Top100'
@@ -30,7 +31,7 @@ export default function Header() {
               </Link>
             </div>
         <div className='input'>
-          <input type='text' placeholder='Название монеты' className='search'></input>
+          <Search />
         </div>
         <div className='settings'>
           <button className='button-setting' onClick={toggleMenu}>Log in</button>

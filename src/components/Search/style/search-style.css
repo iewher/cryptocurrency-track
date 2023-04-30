@@ -1,0 +1,16 @@
+.search {
+    height: 50px;
+    width: 300px;
+    border-radius: 10px;
+    text-indent: 10px;
+    color: black;
+    border: 1px solid black;
+    transition: .3s;
+    outline: none;
+}
+
+.search:hover {
+    color: white;
+    background: black;
+    width: 315px;
+}

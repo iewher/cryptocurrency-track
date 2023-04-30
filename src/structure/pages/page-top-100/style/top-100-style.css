@@ -37,7 +37,7 @@
 }
 
 .scrollable {
-  height: 580px;
+  height: 585px;
   overflow-y: scroll;
 }
 
@@ -75,4 +75,23 @@ table {
   td:nth-child(5),
   td:nth-child(6) {
     text-align: center;
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+  }
+
+  .checkbox-coin {
+    height: 15px;
+    width: 15px;
+    accent-color: black;
+  }
+
+  .image-tokens {
+    width: 3%;
+    height: 3%;
+    margin-right: 10px;
   }

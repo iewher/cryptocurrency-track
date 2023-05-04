@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
 import axios from 'axios';
 import './style/top-100-style.css';
 import Header from '../../../components/Header/Header'
 import Bottom from '../../../components/Bottom/Bottom'
+
 
 export const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
 export const INTERVAL_TIME = 1000;
@@ -98,8 +100,14 @@ export default function Top100() {
                 </td>
                 <td>{coin.CoinInfo.Name}</td>
                 <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.PRICE}</td>
-                <td style={{ color: coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? '#00FA9A' : '#DC143C' }}>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR}%</td>
-                <td style={{ color: coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? '#00FA9A' : '#DC143C' }}>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR}%</td>
+                <td style={{ color: coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? '#00FA9A' : '#DC143C' }}>
+                {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR}% 
+                {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              </td>
+              <td style={{ color: coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? '#00FA9A' : '#DC143C' }}>
+                {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR}% 
+                {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              </td>
                 <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.MKTCAP}</td>
               </tr>
             ))}

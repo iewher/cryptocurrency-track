@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import './style/top-100-style.css';
 import Header from '../../../components/Header/Header'
@@ -10,6 +10,7 @@ export const LOCAL_STORAGE_KEY = 'cryptoData';
 
 export default function Top100() {
   const [data, setData] = useState([]);
+  const [selectedCoins, setSelectedCoins] = useState([]);
 
   useEffect(() => {
     const dataFromStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -41,6 +42,28 @@ export default function Top100() {
     });
   };
 
+  /*
+  Все что написано ниже, я просто в рот ебал
+  */
+
+  const selectedCoinIds = useMemo(() => {
+    return selectedCoins.map((coin) => coin.CoinInfo.Id);
+  }, [selectedCoins]);
+
+  const handleCheckboxChange = (coin) => {
+    const coinIndex = selectedCoins.findIndex(
+      (selectedCoin) => selectedCoin.CoinInfo.Id === coin.CoinInfo.Id
+    );
+    if (coinIndex === -1) {
+      setSelectedCoins([...selectedCoins, coin]);
+    } else {
+      setSelectedCoins([
+        ...selectedCoins.slice(0, coinIndex),
+        ...selectedCoins.slice(coinIndex + 1),
+      ]);
+    }
+  };
+
   const renderTable = () => {
     return (
       <div className='scrollable'>
@@ -52,6 +75,7 @@ export default function Top100() {
               <th>Name</th>
               <th>Symbol</th>
               <th>Price</th>
+              <th>Change (1h)</th>
               <th>Change (24h)</th>
               <th>Market Cap</th>
             </tr>
@@ -61,9 +85,11 @@ export default function Top100() {
             <tr key={coin.CoinInfo.Id}>
               <td>
               <input
-                type="checkbox"
-                className='checkbox-coin'
-              />
+                  type='checkbox'
+                  className='checkbox-coin'
+                  checked={selectedCoinIds.includes(coin.CoinInfo.Id)}
+                  onChange={() => handleCheckboxChange(coin)}
+                />
               </td>
               <td>{index + 1}</td>
               <td>
@@ -72,7 +98,8 @@ export default function Top100() {
                 </td>
                 <td>{coin.CoinInfo.Name}</td>
                 <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.PRICE}</td>
-                <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR}%</td>
+                <td style={{ color: coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? '#00FA9A' : '#DC143C' }}>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR}%</td>
+                <td style={{ color: coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? '#00FA9A' : '#DC143C' }}>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR}%</td>
                 <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.MKTCAP}</td>
               </tr>
             ))}

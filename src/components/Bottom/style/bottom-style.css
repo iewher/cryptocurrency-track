@@ -1,4 +1,10 @@
 .Bottom {
     height: 8%;
+    display: flex;
     justify-content: center;
+}
+
+.rights {
+    font-size: 15px;
+    color: black;
 }

@@ -4,7 +4,7 @@ import './style/bottom-style.css'
 export default function Bottom() {
   return (
     <div className='Bottom'>
-        Bottom
+      <div className='rights'>© 2023 Cryptocurrency track. All rights reserved</div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-.search {
+.search, .button-search {
     height: 50px;
     width: 300px;
     border-radius: 10px;
@@ -7,10 +7,22 @@
     border: 1px solid black;
     transition: .3s;
     outline: none;
+    background: white;
 }
 
 .search:hover {
     color: white;
     background: black;
     width: 315px;
+}
+
+.button-search {
+    margin-left: 10px;
+    width: 75px;
+}
+
+.button-search:hover {
+    width: 100px;
+    background: black;
+    color: white;
 }

@@ -4,13 +4,12 @@ import './style/top-100-style.css';
 import Header from '../../../components/Header/Header'
 import Bottom from '../../../components/Bottom/Bottom'
 
-const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
-const INTERVAL_TIME = 1000;
-const LOCAL_STORAGE_KEY = 'cryptoData';
+export const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
+export const INTERVAL_TIME = 1000;
+export const LOCAL_STORAGE_KEY = 'cryptoData';
 
 export default function Top100() {
   const [data, setData] = useState([]);
-  const [selectedCoins, setSelectedCoins] = useState([]);
 
   useEffect(() => {
     const dataFromStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -42,14 +41,6 @@ export default function Top100() {
     });
   };
 
-  const handleCoinSelect = (coin) => {
-    const isSelected = selectedCoins.includes(coin);
-    setSelectedCoins(isSelected
-      ? selectedCoins.filter(selectedCoin => selectedCoin !== coin)
-      : [...selectedCoins, coin]
-    );
-  };
-
   const renderTable = () => {
     return (
       <div className='scrollable'>
@@ -69,12 +60,10 @@ export default function Top100() {
           {data.map((coin, index) => (
             <tr key={coin.CoinInfo.Id}>
               <td>
-                <input
-                  type="radio"
-                  checked={selectedCoins.includes(coin)}
-                  onChange={() => handleCoinSelect(coin)}
-                  className='checkbox-coin'
-                />
+              <input
+                type="checkbox"
+                className='checkbox-coin'
+              />
               </td>
               <td>{index + 1}</td>
               <td>

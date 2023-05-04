@@ -32,6 +32,9 @@
 .right-screen {
     width: 50%;
     float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .image {
@@ -43,7 +46,7 @@
 }
 
 .image:hover {
-  width: 650px;
+  width: 675px;
   height: 400px;
 }
 

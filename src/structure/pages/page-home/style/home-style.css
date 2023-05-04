@@ -39,6 +39,12 @@
     height: 350px;
     border-radius: 10px;
     border: 1px solid black;
+    transition: .3s;
+}
+
+.image:hover {
+  width: 650px;
+  height: 400px;
 }
 
 .block_text {

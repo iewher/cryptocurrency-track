@@ -33,21 +33,6 @@ export default function Header() {
         <div className='input'>
           <Search />
         </div>
-        <div className='settings'>
-          <button className='button-setting' onClick={toggleMenu}>Log in</button>
-          {isOpen && (
-            <div className='dropdown-menu'>
-              {
-                <div className='dropdown-menu-buttons'>
-                  <button className='button-dropdown'>Профиль</button>
-                  <button className='button-dropdown'>Профиль</button>
-                  <button className='button-dropdown'>Профиль</button>
-                  <button className='button-dropdown'>Профиль</button>
-                </div>
-              }
-            </div>
-          )}
-        </div>
     </div>
   )
 }

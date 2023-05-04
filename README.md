@@ -1,3 +1,9 @@
+# Quick reference
+
+Сryptocurrency track is a website dedicated to cryptocurrency, here you can track any coin you want, also you can view the top 100 coins at the moment.
+
+<image src="src\structure\pages\page-home\source\screen-desktop.jpg">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

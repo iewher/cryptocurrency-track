@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
 export const INTERVAL_TIME = 1000;
@@ -75,31 +76,61 @@ export function GET_TOP_100() {
                 </tr>
               </thead>
               <tbody>
-              {data.map((coin, index) => (
-                <tr key={coin.CoinInfo.Id}>
-                  <td>
-                  <input
-                      type='checkbox'
-                      className='checkbox-coin'
-                      checked={selectedCoinIds.includes(coin.CoinInfo.Id)}
-                      onChange={() => handleCheckboxChange(coin)}
-                    />
-                  </td>
-                  <td>{index + 1}</td>
-                  <td>
-                      <img src={`https://www.cryptocompare.com${coin.CoinInfo.ImageUrl}`} alt={coin.CoinInfo.FullName} className='image-tokens'/>
+                {data.map((coin, index) => (
+                  <tr key={coin.CoinInfo.Id}>
+                    <td>
+                      <input
+                        type='checkbox'
+                        className='checkbox-coin'
+                        checked={selectedCoinIds.includes(coin.CoinInfo.Id)}
+                        onChange={() => handleCheckboxChange(coin)}
+                      />
+                    </td>
+                    <td>{index + 1}</td>
+                    <td>
+                      <img
+                        src={`https://www.cryptocompare.com${coin.CoinInfo.ImageUrl}`}
+                        alt={coin.CoinInfo.FullName}
+                        className='image-tokens'
+                      />
                       {coin.CoinInfo.FullName}
                     </td>
                     <td>{coin.CoinInfo.Name}</td>
                     <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.PRICE}</td>
-                    <td style={{ color: coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? '#00FA9A' : '#DC143C' }}>
-                    {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR}% 
-                    {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
-                  </td>
-                  <td style={{ color: coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? '#00FA9A' : '#DC143C' }}>
-                    {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR}% 
-                    {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
-                  </td>
+                    <td
+                      style={{
+                        color:
+                          coin.DISPLAY &&
+                          coin.DISPLAY.USD &&
+                          coin.DISPLAY.USD.CHANGEPCTHOUR >= 0
+                            ? '#00FA9A'
+                            : '#DC143C',
+                      }}
+                    >
+                      {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR}%
+                      {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? (
+                        <MdArrowDropUp />
+                      ) : (
+                        <MdArrowDropDown />
+                      )}
+                    </td>
+                    <td
+                      style={{
+                        color:
+                          coin.DISPLAY &&
+                          coin.DISPLAY.USD &&
+                          coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0
+                            ? '#00FA9A'
+                            : '#DC143C',
+                      }}
+                    >
+                      {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR}%
+                      {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? (
+                        <MdArrowDropUp />
+                      ) : (
+                        <MdArrowDropDown />
+                      )}
+                    </td>
                     <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.MKTCAP}</td>
                   </tr>
                 ))}
@@ -116,7 +147,7 @@ export function GET_TOP_100() {
       )
 }
 
-export function GET_SELECTION_COIN({ selectedCoins, handleCheckboxChange }) {
+export function GET_SELECTION_COIN({ selectedCoins = [], handleCheckboxChange }) {
     const selectedCoinIds = useMemo(() => {
       return selectedCoins.map((coin) => coin.CoinInfo.Id);
     }, [selectedCoins]);
@@ -203,6 +234,6 @@ export function GET_SELECTION_COIN({ selectedCoins, handleCheckboxChange }) {
       };
     
       return (
-          <div>{selectedCoins.length > 0 ? renderTable() : <p>No selected coins</p>}</div>
+          <div>{selectedCoins.length > 0 ? renderTable() : <p className='loading'>На данный момент вы не выбрали криптовалюты, которые хотите отслеживать</p>}</div>
       ) 
   }

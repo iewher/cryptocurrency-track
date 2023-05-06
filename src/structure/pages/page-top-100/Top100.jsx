@@ -8,15 +8,13 @@ import { GET_TOP_100 } from '../../../components/GET_API/GET_API';
 
 export default function Top100() {
   return (
-    <div className='block'>
-      <Header />
-      <div className='Body'>
-        <div className='body-header'>Топ-100 криптовалют</div>
-        <div className='table'>
+    <div className='top-100'>
+      <div className='top-100-body'>
+        <div className='top-100-body-header'>Топ-100 криптовалют</div>
+        <div className='top-100-table'>
           <GET_TOP_100 />
         </div>
       </div>
-      <Bottom />
     </div>
   );
 }

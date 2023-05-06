@@ -15,22 +15,22 @@ export default function Header() {
   };
   
   return (
-    <div className='Header'>
-        <div className='name'>
+    <div className='header'>
+        <div className='-header-name'>
           Cryptocurrency track
         </div>
-            <div className='buttons'>
+            <div className='header-buttons'>
               <Link to='/'>
-                <button className='button-home'>Главная</button>
+                <button className='header-button-home'>Главная</button>
               </Link>
               <Link to='/top-100'>
-                <button className='button-top-100'>Топ-100</button>
+                <button className='header-button-top-100'>Топ-100</button>
               </Link>
               <Link to='/check'>
-                <button className='button-check'>Отслеживаемое</button>
+                <button className='header-button-check'>Отслеживаемое</button>
               </Link>
             </div>
-        <div className='input'>
+        <div className='header-input'>
           <Search />
         </div>
     </div>

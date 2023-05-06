@@ -6,15 +6,12 @@ import { GET_SELECTION_COIN } from '../../../components/GET_API/GET_API';
 
 export default function Check() {
   return (
-    <div className='block'>
-        <Header />
-        <div className='Body'>
-          <div className='body-header'>Ваши отслеживаемые криптовалюты</div>
-            <div className='table'>
+    <div className='check'>
+        <div className='check-body'>
+            <div className='check-table'>
               <GET_SELECTION_COIN />
             </div>
           </div>
-        <Bottom />
     </div>
   )
 }

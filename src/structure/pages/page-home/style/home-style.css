@@ -1,75 +1,68 @@
-.block-home {
-    display: block;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 79vh;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  margin: 1rem;
+}
+
+.home-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+.home-left-screen {
+  flex: 1;
+  margin: 1rem;
+}
+
+.home-right-screen {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+
+.home-block_text {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: .5rem;
+  background: black;
+  color: white;
+  width: fit-content;
+  height: auto;
+  font-size: 1rem;
+  transition: .3s;
+}
+
+.home-block_text:hover {
+  font-size: 1.1rem;
+}
+
+.home-image {
+  width: 35vw;
+  height: 30vh;
+  transition: .3s;
+}
+
+.home-image:hover {
+  width: 40vw;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .home-image {
+    width: 25vw;
+    height: auto;
   }
-  
-.body-home {
-    background: white;
-    color: black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
-    height: 78%;
 }
 
-.left-screen {
-    width: 50%;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.right-screen {
-    width: 50%;
-    float: right;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.image {
-    width: 600px;
-    height: 350px;
-    border-radius: 10px;
-    border: 1px solid black;
-    transition: .3s;
-}
-
-.image:hover {
-  width: 675px;
-  height: 400px;
-}
-
-.block_text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 600px;
-    height: 125px;
-    border-radius: 10px;
-    background: white;
-    color: black;
-    border: 1px solid black;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    transition: .3s;
-    font-size: 15px;
+@media (min-width: 1024px) {
+  .home-image {
+    width: 30vw;
+    height: auto;
   }
-
-  .block_text:hover {
-    width: 650px;
-    height: 150px;
-    background: black;
-    color: white;
-    font-size: 18px;
-  }
+}

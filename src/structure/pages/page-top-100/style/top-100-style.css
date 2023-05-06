@@ -1,103 +1,24 @@
-.block {
-  display: block;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.Body {
-    background: white;
-    color: black;
-    display: flex;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
-}
-
-.Body {
-    height: 78%;
-    display: block;
-    justify-content: center;
-    align-items: center;
-}
-
-.body-header {
-    height: 15%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 20px;
-}
-
-.scrollable {
-  height: 585px;
-  overflow-y: scroll;
-}
-
-.scrollable::-webkit-scrollbar {
-  width: 10px;
-  height: 100%;
-  background: white;
-  border-radius: 10px;
+.top-100 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
   box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  margin: 1rem;
 }
 
-.scrollable::-webkit-scrollbar-thumb {
-  background: black;
-  border-radius: 10px;
+.top-100-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    padding: 8px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    position: sticky;
-    top: 0;
-    background-color: #f2f2f2;
-  }
-  
-  td:nth-child(4),
-  td:nth-child(5),
-  td:nth-child(6) {
-    text-align: center;
-  }
+.top-100-body-header {
+  font-size: 24px;
+  margin: 20px;
+}
 
-  .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-  }
-
-  .checkbox-coin {
-    height: 15px;
-    width: 15px;
-    accent-color: black;
-  }
-
-  .image-tokens {
-    width: 3%;
-    height: 3%;
-    margin-right: 10px;
-    transition: .3s;
-  }
-
-  .image-tokens:hover {
-    width: 5%;
-    height: 5%;
-  }
+.top-100-table {
+  width: 100%;
+  margin-bottom: 20px;
+}

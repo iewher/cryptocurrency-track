@@ -2,6 +2,7 @@ import React from 'react';
 import './style/style.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
+import Bottom from './components/Bottom/Bottom';
 
 import Home from './structure/pages/page-home/Home';
 import Top100 from './structure/pages/page-top-100/Top100';
@@ -17,6 +18,7 @@ function App() {
           <Route path='/top-100' element={<Top100 />} />
           <Route path='/check' element={<Check />} />
         </Routes>
+        <Bottom />
       </div>
     </BrowserRouter>
   );

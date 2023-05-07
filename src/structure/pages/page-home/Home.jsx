@@ -2,7 +2,8 @@ import React from 'react'
 import './style/home-style.css';
 import Header from '../../../components/Header/Header'
 import Bottom from '../../../components/Bottom/Bottom'
-import logo from './source/screen-desktop.jpg'
+import screen_desktop from './source/screen-desktop.png'
+import screen_mobile from './source/screen-mobile.png'
 
 export default function Home() {
   return (
@@ -14,10 +15,18 @@ export default function Home() {
             <div className='home-block_text'>Быстро, удобно, надежно</div>
           </div>
           <div className='home-right-screen'>
-            <img 
-            src={logo}
-            className='home-image'
-            />
+            <div className='home-desktop-screen'>
+              <img 
+              src={screen_desktop}
+              className='desktop-image'
+              />
+            </div>
+            <div className='home-mobile-screen'>
+              <img 
+              src={screen_mobile}
+              className='mobile-image'
+              />
+            </div>
           </div>
         </div>
     </div>

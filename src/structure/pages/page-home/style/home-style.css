@@ -42,27 +42,46 @@
   font-size: 1.1rem;
 }
 
-.home-image {
-  width: 35vw;
-  height: 30vh;
-  transition: .3s;
+img {
+  image-rendering: optimizeQuality;
 }
 
-.home-image:hover {
-  width: 40vw;
-  height: auto;
+.home-desktop-screen, .home-mobile-screen {
+  width: 50vw;
 }
 
 @media (min-width: 768px) {
-  .home-image {
-    width: 25vw;
-    height: auto;
+  .desktop-image {
+    width: 20vw;
+    height: 50vh;
+  }
+
+  .mobile-image {
+    width: 20vw;
+    height: 50vh;
   }
 }
 
 @media (min-width: 1024px) {
-  .home-image {
-    width: 30vw;
-    height: auto;
+  .desktop-image {
+    width: 21vw;
+    height: 50vh;
+  }
+
+  .mobile-image {
+    width: 21vw;
+    height: 50vh;
+  }
+}
+
+@media (min-width: 1920px) {
+  .desktop-image {
+    width: 23vw;
+    height: 50vh;
+  }
+
+  .mobile-image {
+    width: 23vw;
+    height: 50vh;
   }
 }

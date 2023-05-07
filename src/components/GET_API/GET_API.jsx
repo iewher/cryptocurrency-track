@@ -25,10 +25,13 @@ export function GET_TOP_100() {
       }, []);
     
       const fetchData = () => {
+        const value = 100; 
+        const currency = 'USD'
+
         axios.get(API_URL, {
           params: {
-            limit: 100,
-            tsym: 'USD'
+            limit: value,
+            tsym: currency
           }
         })
         .then(response => {

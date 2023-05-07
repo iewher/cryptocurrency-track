@@ -67,9 +67,11 @@ export default function Search() {
           value={searchCoin}
           onChange={handleInputChange}
         />
-        <button className="search-button" onClick={handleSearch}>
-          Поиск
-        </button>
+        <Link to='/coin'>
+          <button className="search-button" onClick={handleSearch}>
+            Поиск
+          </button>
+        </Link>
       </div>
     </div>
   );

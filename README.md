@@ -2,13 +2,7 @@
 
 Сryptocurrency track is a website dedicated to cryptocurrency, here you can track any coin you want, also you can view the top 100 coins at the moment.
 
-## On desktop 
-
-<image src="public\forgithub\desktop-git.png" height="350" width="650">
-
-## On mobile 
-
-<image src="public\forgithub\mobile-git.png#center" height="450" width="250">
+<image src="src\structure\pages\page-home\source\screen-desktop.png">
 
 # Getting Started with Create React App
 

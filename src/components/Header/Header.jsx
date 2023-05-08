@@ -1,19 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import './style/header-style.css'
-import Search from '../Search/Search'
-
-import Home from '../../structure/pages/page-home/Home'
-import Top100 from '../../structure/pages/page-top-100/Top100'
-import Check from '../../structure/pages/page-check/Check'
+import Search from '../Search/Search';
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-  
   return (
     <div className='header'>
         <div className='-header-name'>

@@ -1,4 +1,4 @@
-.check {
+.coin {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,9 +7,13 @@
     margin: 1rem;
   }
   
-  .check-body {
+  .coin-body {
     display: block;
     justify-content: space-between;
     align-items: center;
+    margin: 1rem;
+  }
+
+  .coin-body-header {
     margin: 1rem;
   }

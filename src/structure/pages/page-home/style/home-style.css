@@ -46,42 +46,46 @@ img {
   image-rendering: optimizeQuality;
 }
 
-.home-desktop-screen, .home-mobile-screen {
-  width: 50vw;
+.home-desktop-screen {
+  width: 60vw;
+}
+
+.home-mobile-screen {
+  width: 40vw;
 }
 
 @media (min-width: 768px) {
   .desktop-image {
     width: 20vw;
-    height: 50vh;
+    height: 20vh;
   }
 
   .mobile-image {
-    width: 20vw;
-    height: 50vh;
+    width: 8vw;
+    height: 30vh;
   }
 }
 
 @media (min-width: 1024px) {
   .desktop-image {
-    width: 21vw;
-    height: 50vh;
+    width: 30vw;
+    height: 30vh;
   }
 
   .mobile-image {
-    width: 21vw;
-    height: 50vh;
+    width: 9vw;
+    height: 30vh;
   }
 }
 
 @media (min-width: 1920px) {
   .desktop-image {
-    width: 23vw;
+    width: 50vw;
     height: 50vh;
   }
 
   .mobile-image {
-    width: 23vw;
+    width: 35vw;
     height: 50vh;
   }
 }

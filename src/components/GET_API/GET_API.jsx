@@ -4,7 +4,7 @@ import axios from 'axios';
 import './style/get-api-style.css'
 
 export const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
-export const INTERVAL_TIME = 1000;
+export const INTERVAL_TIME = 5000;
 export const LOCAL_STORAGE_KEY = 'cryptoData';
 
 export function GET_TOP_100() {

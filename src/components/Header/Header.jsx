@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './style/header-style.css'
-import Search from '../Search/Search';
+import {Search} from '../Search/Search';
 
 export default function Header() {
   return (

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './style/header-style.css'
-import {Search} from '../Search/Search';
 
 export default function Header() {
   return (
@@ -20,9 +19,6 @@ export default function Header() {
                 <button className='header-button-check'>Отслеживаемое</button>
               </Link>
             </div>
-        <div className='header-input'>
-          <Search />
-        </div>
     </div>
   )
 }

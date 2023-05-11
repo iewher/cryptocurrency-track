@@ -1,12 +1,14 @@
+<div align="center">
+  
 # Quick reference
 
 Сryptocurrency track is a website dedicated to cryptocurrency, here you can track any coin you want, also you can view the top 100 coins at the moment.
 
-## On desktop 
+## on desktop 
 
 <image src="public\forgithub\desktop-git.png" height="350" width="650">
 
-## On mobile 
+## on mobile 
 
 <image src="public\forgithub\mobile-git.png#center" height="450" width="250">
 
@@ -80,3 +82,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</div>

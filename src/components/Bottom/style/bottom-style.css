@@ -14,6 +14,28 @@
     color: black;
 }
 
+.bottom-git, .bottom-telegram {
+  height: 4vh;
+  width: 2vw;
+  align-items: right;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: .5rem;
+  transition: .3s;
+  margin-left: 1rem;
+}
+
+.bottom-git:hover, .bottom-telegram:hover {
+  height: 4.5vh;
+  width: 2.5vw;
+}
+
+.icons {
+  height: 100%;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .bottom-rights {
     font-size: 12px;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './style/check-style.css';
-import { GET_SELECTION_COIN } from '../../../components/GET_API/GET_API';
+import { GET_SELECTION_COIN } from '../../../components/GET_API/GET_API_CHECK';
 
 export default function Check() {
   return (

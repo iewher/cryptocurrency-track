@@ -6,11 +6,11 @@
   
 ## on desktop 
 
-<image src="public\forgithub\desktop-git.png" height="350" width="650">
+<image src="src/structure/pages/page-home/source/screen-desktop.png" height="350" width="650">
 
 ## on mobile 
 
-<image src="public\forgithub\mobile-git.png#center" height="450" width="250">
+<image src="src/structure/pages/page-home/source/screen-mobile.png" height="450" width="250">
   
 </div>
 

@@ -36,6 +36,10 @@
     width: 2rem;
     height: 2rem;
   }
+
+  .gray-text {
+    color: gray;
+  }
   
   @media (max-width: 768px) {
     table {

@@ -81,7 +81,6 @@ export function GET_TOP_100() {
                   <th>Check</th>
                   <th>Rank</th>
                   <th>Name</th>
-                  <th>Symbol</th>
                   <th>Price</th>
                   <th>1h %</th>
                   <th>24h %</th>
@@ -111,9 +110,8 @@ export function GET_TOP_100() {
                         alt={coin.CoinInfo.FullName}
                         className='image-tokens'
                       />
-                      {coin.CoinInfo.FullName}
+                      {coin.CoinInfo.FullName} | <span className='gray-text'>{coin.CoinInfo.Name}</span>
                     </td>
-                    <td>{coin.CoinInfo.Name}</td>
                     <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.PRICE}</td>
                     <td
                       style={{

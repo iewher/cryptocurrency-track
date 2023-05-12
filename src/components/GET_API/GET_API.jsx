@@ -4,7 +4,7 @@ import axios from 'axios';
 import './style/get-api-style.css'
 
 export const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
-export const INTERVAL_TIME = 5000;
+export const INTERVAL_TIME = 1000;
 export const LOCAL_STORAGE_KEY = 'cryptoData';
 
 export function GET_TOP_100() {
@@ -12,12 +12,6 @@ export function GET_TOP_100() {
     const [selectedCoins, setSelectedCoins] = useState([]);
 
     useEffect(() => {
-        const dataFromStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (dataFromStorage) {
-          setData(JSON.parse(dataFromStorage));
-        } else {
-          fetchData();
-        }
         const interval = setInterval(() => {
           fetchData();
         }, INTERVAL_TIME);
@@ -37,7 +31,7 @@ export function GET_TOP_100() {
         .then(response => {
           const data = response.data.Data;
           setData(data);
-          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+          // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
         })
         .catch(error => {
           console.error(error);
@@ -49,19 +43,36 @@ export function GET_TOP_100() {
       }, [selectedCoins]);
     
       const handleCheckboxChange = (coin) => {
-        const coinIndex = selectedCoins.findIndex(
+        const updatedCoins = [...selectedCoins];
+        const coinIndex = updatedCoins.findIndex(
           (selectedCoin) => selectedCoin.CoinInfo.Id === coin.CoinInfo.Id
         );
+        
         if (coinIndex === -1) {
-          setSelectedCoins([...selectedCoins, coin]);
+          updatedCoins.push({ ...coin, checked: true });
         } else {
-          setSelectedCoins([
-            ...selectedCoins.slice(0, coinIndex),
-            ...selectedCoins.slice(coinIndex + 1),
-          ]);
+          updatedCoins.splice(coinIndex, 1);
+        }
+      
+        const checkedCoins = updatedCoins.filter((selectedCoin) => selectedCoin.checked);
+        setSelectedCoins(updatedCoins);
+      
+        if (checkedCoins.length > 0) {
+          localStorage.setItem('myObjects', JSON.stringify(checkedCoins));
+        } else {
+          localStorage.removeItem('myObjects');
         }
       };
 
+      const wasCheckboxChecked = (coin) => {
+        const storedCoins = localStorage.getItem('myObjects');
+        if (storedCoins) {
+          const parsedCoins = JSON.parse(storedCoins);
+          return parsedCoins.some((storedCoin) => storedCoin.CoinInfo.Id === coin.CoinInfo.Id);
+        }
+        return false;
+      };
+      
       const renderTable = () => {
         return (
           <div className='scrollable'>
@@ -82,12 +93,17 @@ export function GET_TOP_100() {
                 {data.map((coin, index) => (
                   <tr key={coin.CoinInfo.Id}>
                     <td>
-                      <input
-                        type='checkbox'
-                        className='checkbox-coin'
-                        checked={selectedCoinIds.includes(coin.CoinInfo.Id)}
-                        onChange={() => handleCheckboxChange(coin)}
-                      />
+                    <input
+                      type='checkbox'
+                      className='checkbox-coin'
+                      checked={wasCheckboxChecked(coin) || selectedCoinIds.includes(coin.CoinInfo.Id)}
+                      onChange={() =>
+                        handleCheckboxChange({
+                          ...coin,
+                          checked: !selectedCoinIds.includes(coin.CoinInfo.Id),
+                        })
+                      }
+                    />
                     </td>
                     <td>{index + 1}</td>
                     <td>
@@ -151,92 +167,100 @@ export function GET_TOP_100() {
 }
 
 export function GET_SELECTION_COIN({ selectedCoins = [], handleCheckboxChange }) {
-    const selectedCoinIds = useMemo(() => {
-      return selectedCoins.map((coin) => coin.CoinInfo.Id);
-    }, [selectedCoins]);
+  const [storedCoins, setStoredCoins] = useState([]);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('myObjects');
+    if (storedData) {
+      setStoredCoins(JSON.parse(storedData));
+    }
+  }, []);
+
+  const selectedCoinIds = useMemo(() => {
+    return selectedCoins.map((coin) => coin.CoinInfo.Id);
+  }, [selectedCoins]);
+
+  const renderTable = () => {
+    return (
+      <div className='scrollable'>
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Symbol</th>
+              <th>Price</th>
+              <th>1h %</th>
+              <th>24h %</th>
+              <th>Market Cap</th>
+            </tr>
+          </thead>
+          <tbody>
+            {storedCoins.map((coin, index) => (
+              <tr key={coin.CoinInfo.Id}>
+                <td>{index + 1}</td>
+                <td>
+                  <img
+                    src={`https://www.cryptocompare.com${coin.CoinInfo.ImageUrl}`}
+                    alt={coin.CoinInfo.FullName}
+                    className='image-tokens'
+                  />
+                  {coin.CoinInfo.FullName}
+                </td>
+                <td>{coin.CoinInfo.Name}</td>
+                <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.PRICE}</td>
+                <td
+                  style={{
+                    color:
+                      coin.DISPLAY &&
+                      coin.DISPLAY.USD &&
+                      coin.DISPLAY.USD.CHANGEPCTHOUR >= 0
+                        ? '#00FA9A'
+                        : '#DC143C',
+                  }}
+                >
+                  {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR}%
+                  {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? (
+                    <MdArrowDropUp />
+                  ) : (
+                    <MdArrowDropDown />
+                  )}
+                </td>
+                <td
+                  style={{
+                    color:
+                      coin.DISPLAY &&
+                      coin.DISPLAY.USD &&
+                      coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0
+                        ? '#00FA9A'
+                        : '#DC143C',
+                  }}
+                >
+                  {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR}%
+                  {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? (
+                    <MdArrowDropUp />
+                  ) : (
+                    <MdArrowDropDown />
+                  )}
+                </td>
+                <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.MKTCAP}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
     
-      const renderTable = () => {
-        return (
-          <div className='scrollable'>
-            <table>
-              <thead>
-                <tr>
-                  <th>Check</th>
-                  <th>Rank</th>
-                  <th>Name</th>
-                  <th>Symbol</th>
-                  <th>Price</th>
-                  <th>1h %</th>
-                  <th>24h %</th>
-                  <th>Market Cap</th>
-                </tr>
-              </thead>
-              <tbody>
-                {selectedCoins.map((coin, index) => (
-                  <tr key={coin.CoinInfo.Id}>
-                    <td>
-                      <input
-                        type='checkbox'
-                        className='checkbox-coin'
-                        checked={selectedCoinIds.includes(coin.CoinInfo.Id)}
-                        onChange={() => handleCheckboxChange(coin)}
-                      />
-                    </td>
-                    <td>{index + 1}</td>
-                    <td>
-                      <img
-                        src={`https://www.cryptocompare.com${coin.CoinInfo.ImageUrl}`}
-                        alt={coin.CoinInfo.FullName}
-                        className='image-tokens'
-                      />
-                      {coin.CoinInfo.FullName}
-                    </td>
-                    <td>{coin.CoinInfo.Name}</td>
-                    <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.PRICE}</td>
-                    <td
-                      style={{
-                        color:
-                          coin.DISPLAY &&
-                          coin.DISPLAY.USD &&
-                          coin.DISPLAY.USD.CHANGEPCTHOUR >= 0
-                            ? '#00FA9A'
-                            : '#DC143C',
-                      }}
-                    >
-                      {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR}%
-                      {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? (
-                        <MdArrowDropUp />
-                      ) : (
-                        <MdArrowDropDown />
-                      )}
-                    </td>
-                    <td
-                      style={{
-                        color:
-                          coin.DISPLAY &&
-                          coin.DISPLAY.USD &&
-                          coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0
-                            ? '#00FA9A'
-                            : '#DC143C',
-                      }}
-                    >
-                      {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR}%
-                      {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? (
-                        <MdArrowDropUp />
-                      ) : (
-                        <MdArrowDropDown />
-                      )}
-                    </td>
-                    <td>{coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.MKTCAP}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        );
-      };
-    
-      return (
-          <div>{selectedCoins.length > 0 ? renderTable() : <p className='loading'>На данный момент вы не выбрали криптовалюты, которые хотите отслеживать</p>}</div>
-      ) 
+  return (
+    <div>
+      {storedCoins.length > 0 ? (
+        renderTable()
+      ) : (
+        <p className='loading'>
+          На данный момент вы не выбрали криптовалюты, которые хотите отслеживать
+        </p>
+      )}
+    </div>
+  );
   }

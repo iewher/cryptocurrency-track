@@ -10,7 +10,9 @@
 .top-100-body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 99%;
 }
 
 .top-100-body-header {

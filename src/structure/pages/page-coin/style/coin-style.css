@@ -2,18 +2,42 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 79vh;
+    height: auto;
     box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     margin: 1rem;
+    min-height: 75%;
   }
   
   .coin-body {
-    display: block;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 1rem;
+    width: 99%;
   }
-
-  .coin-body-header {
-    margin: 1rem;
+  
+  .coin-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
+  
+  .price,
+  .high,
+  .low {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .price {
+    color: #000;
+  }
+  
+  .high {
+    color: green;
+  }
+  
+  .low {
+    color: red;
+  }
+  

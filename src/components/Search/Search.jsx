@@ -1,124 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './style/search-style.css';
-import axios from 'axios';
-import Coin from '../../structure/pages/page-coin/Coin';
 
-export const API_URL = 'https://min-api.cryptocompare.com/data/pricemultifull';
-export const INTERVAL_TIME = 1000;
-export const LOCAL_STORAGE_KEY = 'cryptoData';
+const API_URL_SEARCH = 'https://min-api.cryptocompare.com/data/pricemultifull';
 
-const fetchData = async (coin, currency) => {
-  try {
-    const response = await axios.get(API_URL, {
-      params: {
-        fsyms: coin,
-        tsyms: currency,
-      },
+const fetchData = (coin) => {
+  const params = new URLSearchParams();
+
+  params.append('fsyms', coin);
+  params.append('tsyms', 'USD');
+
+  return fetch(`${API_URL_SEARCH}?${params}`)
+    .then((res) => res.json())
+    .then((data) => {
+        localStorage.setItem('coinObject', JSON.stringify(data));
+        return data;
+    })
+    .catch((error) => {
+      console.error(error.message);
     });
-    const data = response.data;
-    // console.log(data);
-    return data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
 };
 
-const SearchForm = ({ searchCoin, handleInputChange, handleSearch }) => {
+export const ShowSearch = () => {
+  const [coin, setCoin] = useState('');
+
+  const handleCoin = (event) => {
+    setCoin(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    fetchData(coin);
+    ShowCoinInfo(coin);
+  };
+
   return (
-    <div className="header-search">
+    <div>
       <input
-        type="text"
-        placeholder="Название монеты"
-        className="search-input"
-        value={searchCoin}
-        onChange={handleInputChange}
+        type='text'
+        placeholder='Выберите монету'
+        onChange={handleCoin}
       />
       <Link to='/coin'>
-        <button className="search-button" onClick={handleSearch}>
-          Поиск
-        </button>
+        <button onClick={handleSubmit}>Найти</button>
       </Link>
     </div>
   );
 };
 
-export const DisplayData = ({ data }) => {
-  if (!data || Object.keys(data).length === 0) {
-    return <div>No data available</div>;
-  }
-  console.log(data);
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Coin</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.keys(data).map((coin, index) => (
-          <tr key={index}>
-            <td>{data.DISPLAY.BTC.USD.MARKET}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-};
-
-export const Search = () => {
-  const [data, setData] = useState({});
-  const [searchCoin, setSearchCoin] = useState('');
-  const [intervalId, setIntervalId] = useState(null);
-
-  // console.log(data);
-
-  const startInterval = () => {
-    const id = setInterval(() => {
-      fetchData(searchCoin, 'USD')
-        .then(data => {
-          setData(data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }, INTERVAL_TIME);
-    setIntervalId(id);
-  };
-
-  const stopInterval = () => {
-    clearInterval(intervalId);
-    setIntervalId(null);
-  };
-
-  const handleInputChange = event => {
-    setSearchCoin(event.target.value);
-    if (intervalId) {
-      stopInterval();
-    }
-  };
-
-  const handleSearch = () => {
-    fetchData(searchCoin, 'USD')
-      .then(data => {
-        setData(data);
-        if (!intervalId) {
-          startInterval();
-        }
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
+export const ShowCoinInfo = (coin) => {
+  const storedData = localStorage.getItem('coinObject');
+  const data = JSON.parse(storedData);
 
   return (
-    <div className="search">
-      <SearchForm
-        searchCoin={searchCoin}
-        handleInputChange={handleInputChange}
-        handleSearch={handleSearch}
-      />
+    <div className='coin'>
+      <div className='coin-body'>
+        <h2 className='coin-name'>{data.DISPLAY.BSW.USD.FROMSYMBOL}</h2>
+        <p className='price'>Current Price: {data.RAW.BSW.USD.PRICE}</p>
+        <p className='high'>24h High: {data.DISPLAY.BSW.USD.HIGH24HOUR}</p>
+        <p className='low'>24h Low: {data.DISPLAY.BSW.USD.LOW24HOUR}</p>
+      </div>
     </div>
   );
 };

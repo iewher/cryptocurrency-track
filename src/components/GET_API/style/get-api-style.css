@@ -40,6 +40,13 @@
   .gray-text {
     color: gray;
   }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+  }
   
   @media (max-width: 768px) {
     table {

@@ -6,9 +6,18 @@ Implemented features:
 2. View the cryptocurrencies you want to track
 3. Search for any cryptocurrency and view information about it
 
+## Used API
+  
+1. https://min-api.cryptocompare.com/
+2. https://www.coingecko.com/en/api
+
+# Preview
+
+Images of my project, you can see how it will look on a PC and on a mobile phone
+
 <div align="center">
   
-## on desktop 
+## on PC
 
 <image src="src/structure/pages/page-home/source/screen-desktop.png" height="350" width="650">
 

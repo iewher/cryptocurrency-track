@@ -1,6 +1,10 @@
 # Quick reference
 
-Сryptocurrency track is a website dedicated to cryptocurrency, here you can track any coin you want, also you can view the top 100 coins at the moment.
+Cryptocurrency track is a website dedicated to cryptocurrency.
+Implemented features:
+1. Top 100 Cryptocurrencies
+2. View the cryptocurrencies you want to track
+3. Search for any cryptocurrency and view information about it
 
 <div align="center">
   

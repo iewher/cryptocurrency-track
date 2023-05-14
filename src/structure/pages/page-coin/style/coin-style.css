@@ -17,8 +17,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
   }
+
+.coin-name img {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+    transition: .3s;
+}
+
+.coin-name img:hover {
+    height: 3rem;
+    width: 3rem;
+}
 
 .coin-details p{
     font-size: 1rem;
@@ -42,12 +53,13 @@
 .coin-links {
     background: black;
     color: white;
-    border-radius: 1rem;
+    border-radius: .5rem;
+    padding: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 3vh;
-    width: 50vw;
+    width: fit-content;
 }
 
 .coin-links a {

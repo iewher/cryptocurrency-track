@@ -52,22 +52,65 @@ export const ShowCoinInfo = () => {
   return (
     <div className='coin'>
       <div className='coin-body'>
-        <div className='coin-name'>
-          <h2>
-            {data.name} | <span className='coin-symbol'>{data.symbol}</span>
-          </h2>
-        </div>
+      <div className='coin-name'>
+        {/* <img src={`${data.image.small}`} alt={data.name} /> */}
+        <h2>
+          {data.name} | <span className='coin-symbol' style={{ textTransform: 'uppercase' }}>{data.symbol}</span>
+        </h2>
+      </div>
         <div className='coin-price'>
           <p>Цена: {data.market_data.current_price.usd} $</p>
           <details>
             <summary>Изменения цены</summary>
-            <p>1 час: <span style={{ color: data.market_data.price_change_percentage_1h_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>{data.market_data.price_change_percentage_1h_in_currency.usd} %</span> </p>
-            <p>1 день: <span style={{ color: data.market_data.price_change_percentage_24h_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>{data.market_data.price_change_percentage_24h_in_currency.usd} %</span> </p>
-            <p>7 дней: <span style={{ color: data.market_data.price_change_percentage_7d_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>{data.market_data.price_change_percentage_7d_in_currency.usd} %</span> </p>
-            <p>14 дней: <span style={{ color: data.market_data.price_change_percentage_14d_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>{data.market_data.price_change_percentage_14d_in_currency.usd} %</span> </p>
-            <p>30 дней: <span style={{ color: data.market_data.price_change_percentage_30d_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>{data.market_data.price_change_percentage_30d_in_currency.usd} %</span> </p>
-            <p>60 дней: <span style={{ color: data.market_data.price_change_percentage_60d_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>{data.market_data.price_change_percentage_60d_in_currency.usd} %</span> </p>
-            <p>1 год: <span style={{ color: data.market_data.price_change_percentage_1y_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>{data.market_data.price_change_percentage_1y_in_currency.usd} %</span> </p>
+            <p>
+              1 час:{' '}
+              <span style={{ color: data.market_data.price_change_percentage_1h_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>
+                {data.market_data.price_change_percentage_1h_in_currency.usd} %
+                {data.market_data.price_change_percentage_1h_in_currency.usd >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              </span>
+            </p>
+            <p>
+              1 день:{' '}
+              <span style={{ color: data.market_data.price_change_percentage_24h_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>
+                {data.market_data.price_change_percentage_24h_in_currency.usd} %
+                {data.market_data.price_change_percentage_24h_in_currency.usd >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              </span>
+            </p>
+            <p>
+              7 дней:{' '}
+              <span style={{ color: data.market_data.price_change_percentage_7d_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>
+                {data.market_data.price_change_percentage_7d_in_currency.usd} %
+                {data.market_data.price_change_percentage_7d_in_currency.usd >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              </span>
+            </p>
+            <p>
+              14 дней:{' '}
+              <span style={{ color: data.market_data.price_change_percentage_14d_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>
+                {data.market_data.price_change_percentage_14d_in_currency.usd} %
+                {data.market_data.price_change_percentage_14d_in_currency.usd >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              </span>
+            </p>
+            <p>
+              30 дней:{' '}
+              <span style={{ color: data.market_data.price_change_percentage_30d_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>
+                {data.market_data.price_change_percentage_30d_in_currency.usd} %
+                {data.market_data.price_change_percentage_30d_in_currency.usd >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              </span>
+            </p>
+            <p>
+              60 дней:{' '}
+              <span style={{ color: data.market_data.price_change_percentage_60d_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>
+                {data.market_data.price_change_percentage_60d_in_currency.usd} %
+                {data.market_data.price_change_percentage_60d_in_currency.usd >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              </span>
+            </p>
+            <p>
+              1 год:{' '}
+              <span style={{ color: data.market_data.price_change_percentage_1y_in_currency.usd >= 0 ? '#00FA9A' : '#DC143C' }}>
+                {data.market_data.price_change_percentage_1y_in_currency.usd} %
+                {data.market_data.price_change_percentage_1y_in_currency.usd >= 0 ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              </span>
+            </p>
           </details>
         </div>
         <div className='coin-details'>
@@ -79,7 +122,7 @@ export const ShowCoinInfo = () => {
             <summary>Ссылки:</summary>
             <p className='coin-links'>Сайт: <a href={data.links.homepage}>{data.links.homepage}</a></p>
             <p className='coin-links'>Документация: <a href={data.links.official_forum_url}>{data.links.official_forum_url}</a></p>
-            <p className='coin-links'>GitHub: <a href={data.links.repos_url.github}>{data.links.repos_url.github}</a></p>
+            <p className='coin-links'>GitHub: <a href={data.links.repos_url.github[0]}>{data.links.repos_url.github[0]}</a></p>
           </details>
         </div>
       </div>

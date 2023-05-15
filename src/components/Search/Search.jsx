@@ -53,7 +53,7 @@ export const ShowCoinInfo = () => {
     <div className='coin'>
       <div className='coin-body'>
       <div className='coin-name'>
-        {/* <img src={`${data.image.small}`} alt={data.name} /> */}
+        { <img src={`${data.image.small}`} alt={data.name} /> }
         <h2>
           {data.name} | <span className='coin-symbol' style={{ textTransform: 'uppercase' }}>{data.symbol}</span>
         </h2>

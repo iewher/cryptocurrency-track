@@ -4,7 +4,7 @@ import { ShowCoinInfo } from '../../../components/Search/Search'
 
 export default function Coin() {
   return (
-        <ShowCoinInfo />
+    <ShowCoinInfo />
   )
 }
 

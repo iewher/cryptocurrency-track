@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style/search-style.css'
 import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
+import { Line } from 'react-chartjs-2';
+import { CategoryScale, LinearScale, Chart, registerables } from 'chart.js';
 
 const API_URL_SEARCH = 'https://api.coingecko.com/api/v3/coins';
 
@@ -11,6 +13,7 @@ const fetchData = (coin) => {
     .then((res) => res.json())
     .then((data) => {
         localStorage.setItem('coinObject', JSON.stringify(data));
+        console.log(data);
         return data;
     })
     .catch((error) => {
@@ -45,6 +48,62 @@ export const ShowSearch = () => {
   );
 };
 
+Chart.register(CategoryScale, LinearScale, ...registerables);
+
+export const ChartComponent = () => {
+  const [chartData, setChartData] = useState({});
+
+  const storedData = localStorage.getItem('coinObject');
+  const coin_id = JSON.parse(storedData);
+
+  useEffect(() => {
+    if (coin_id) {
+      fetch(`https://api.coingecko.com/api/v3/coins/${coin_id.id}/market_chart?vs_currency=usd&days=1`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.prices && data.prices.length > 0) {
+            const prices = data.prices.map(price => price[1]);
+
+            // Limit the data points to 24
+            const limitedPrices = prices.slice(0, 24);
+
+            // Generate labels from "00:00" to "23:00"
+            const labels = Array.from(Array(24).keys()).map(index => {
+              const hour = index.toString().padStart(2, '0');
+              return `${hour}:00`;
+            });
+
+            setChartData({
+              labels: labels,
+              datasets: [{
+                label: `${coin_id.name} price in USD`,
+                data: limitedPrices,
+                borderColor: 'black',
+                fill: false
+              }]
+            });
+          } else {
+            console.error('Отсутствуют данные о ценах.');
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка при получении данных из API:', error);
+        });
+    }
+  }, [coin_id]);
+
+  return (
+    <div className='coin-charts'>
+      {Object.keys(chartData).length > 0 ? (
+        <Line data={chartData} />
+      ) : (
+        <p>Загрузка данных...</p>
+      )}
+    </div>
+  );
+};
+
+
 export const ShowCoinInfo = () => {
   const storedData = localStorage.getItem('coinObject');
   const data = JSON.parse(storedData);
@@ -53,7 +112,7 @@ export const ShowCoinInfo = () => {
     <div className='coin'>
       <div className='coin-body'>
       <div className='coin-name'>
-        { <img src={`${data.image.small}`} alt={data.name} /> }
+        { data.image && data.image.large && <img src={`${data.image.large}`} alt={data.name}/> }
         <h2>
           {data.name} | <span className='coin-symbol' style={{ textTransform: 'uppercase' }}>{data.symbol}</span>
         </h2>
@@ -83,16 +142,17 @@ export const ShowCoinInfo = () => {
         </div>
         <div className='coin-details'>
           <p>BSCSCAN: <a href={data.links.blockchain_site}>{data.links.blockchain_site}</a></p>
-          <p>Contract: {data.contract_address}</p>
+          {data.contract_address && <p>Contract: {data.contract_address}</p> || <p>Contract: извините, произошла ошибка с получением контракта</p>}
         </div>
         <div>
           <details>
             <summary>Ссылки:</summary>
-            <p className='coin-links'>Сайт: <a href={data.links.homepage}>{data.links.homepage}</a></p>
-            <p className='coin-links'>Документация: <a href={data.links.official_forum_url}>{data.links.official_forum_url}</a></p>
-            <p className='coin-links'>GitHub: <a href={data.links.repos_url.github[0]}>{data.links.repos_url.github[0]}</a></p>
+            {data.links && data.links.homepage && <p className='coin-links'>Сайт: <a href={data.links.homepage}>{data.links.homepage}</a></p>}
+            {data.links && data.links.official_forum_url && <p className='coin-links'>Документация: <a href={data.links.official_forum_url}>{data.links.official_forum_url}</a></p>}
+            {data.links && data.links.repos_url && data.links.repos_url.github && data.links.repos_url.github[0] && <p className='coin-links'>GitHub: <a href={data.links.repos_url.github[0]}>{data.links.repos_url.github[0]}</a></p>}
           </details>
         </div>
+          <ChartComponent />
       </div>
     </div>
   );

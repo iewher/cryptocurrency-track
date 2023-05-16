@@ -20,8 +20,8 @@
   }
 
 .coin-name img {
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     margin-right: 1rem;
     transition: .3s;
 }
@@ -65,4 +65,9 @@
 .coin-links a {
     margin-left: 0.5rem;
     color: white;
+}
+
+.coin-charts {
+  height: 70%;
+  width: 100%;
 }

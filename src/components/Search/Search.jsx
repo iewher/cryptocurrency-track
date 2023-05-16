@@ -63,11 +63,7 @@ export const ChartComponent = () => {
         .then(data => {
           if (data.prices && data.prices.length > 0) {
             const prices = data.prices.map(price => price[1]);
-
-            // Limit the data points to 24
             const limitedPrices = prices.slice(0, 24);
-
-            // Generate labels from "00:00" to "23:00"
             const labels = Array.from(Array(24).keys()).map(index => {
               const hour = index.toString().padStart(2, '0');
               return `${hour}:00`;
@@ -103,7 +99,6 @@ export const ChartComponent = () => {
   );
 };
 
-
 export const ShowCoinInfo = () => {
   const storedData = localStorage.getItem('coinObject');
   const data = JSON.parse(storedData);
@@ -118,7 +113,7 @@ export const ShowCoinInfo = () => {
         </h2>
       </div>
         <div className='coin-price'>
-          <p>Цена: {data.market_data.current_price.usd} $</p>
+          {data.market_data && data.market_data.current_price && <p>Цена: {data.market_data.current_price.usd} $</p>}
           <details>
               <summary>Изменения цены</summary>
               {[

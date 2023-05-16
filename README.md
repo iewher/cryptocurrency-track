@@ -19,11 +19,11 @@ Images of my project, you can see how it will look on a PC and on a mobile phone
   
 ## on PC
 
-<image src="src/structure/pages/page-home/source/screen-desktop.png" height="350" width="650">
+<image src="src/structure/pages/page-home/source/screen-imac.png" height="420" width="550">
 
 ## on mobile 
 
-<image src="src/structure/pages/page-home/source/screen-mobile.png" height="450" width="250">
+<image src="src/structure/pages/page-home/source/screen-iphone.png" height="450" width="250">
   
 </div>
 

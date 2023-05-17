@@ -40,11 +40,21 @@
   .bottom-rights {
     font-size: 12px;
   }
+
+  .bottom-git, .bottom-telegram {
+  height: 5vh;
+  width: 5vw;
+  }
 }
 
 @media (max-width: 1024px) {
   .bottom-rights {
     font-size: 14px;
+  }
+
+  .bottom-git, .bottom-telegram {
+  height: 4vh;
+  width: 4vw;
   }
 }
 

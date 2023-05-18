@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './style/search-style.css'
-import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
+import './style/search-style.css';
+import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md';
 import { Line } from 'react-chartjs-2';
 import { CategoryScale, LinearScale, Chart, registerables } from 'chart.js';
 

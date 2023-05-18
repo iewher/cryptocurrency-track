@@ -59,7 +59,7 @@ export const ChartComponent_1day = () => {
   useEffect(() => {
     if (coin_id) {
       fetch(`https://api.coingecko.com/api/v3/coins/${coin_id.id}/market_chart?vs_currency=usd&days=1`)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
           if (data.prices && data.prices.length > 0) {
             const prices = data.prices.map(price => price[1]);
@@ -108,7 +108,7 @@ export const ChartComponent_7day = () => {
   useEffect(() => {
     if (coin_id) {
       fetch(`https://api.coingecko.com/api/v3/coins/${coin_id.id}/market_chart?vs_currency=usd&days=7`)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
           if (data.prices && data.prices.length > 0) {
             const prices = data.prices.map(price => price[1]);
@@ -157,7 +157,7 @@ export const ChartComponent_30day = () => {
   useEffect(() => {
     if (coin_id) {
       fetch(`https://api.coingecko.com/api/v3/coins/${coin_id.id}/market_chart?vs_currency=usd&days=30`)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
           if (data.prices && data.prices.length > 0) {
             const prices = data.prices.map(price => price[1]);

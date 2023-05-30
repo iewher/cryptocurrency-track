@@ -1,0 +1,100 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin height_and_wight ($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+$white: #fff;
+$black: #000;
+$shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+
+%margins-coin {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.coin {
+  @include height_and_wight(auto, auto);
+  display: flex;
+  box-shadow: $shadow;
+  margin: 1rem;
+  min-height: 75%;
+}
+  
+.coin-body {
+  @include height_and_wight(auto, 99%);
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+  
+.coin-name {
+  @include flex-center();
+}
+
+.coin-name {
+  img {
+    @include height_and_wight(3rem, 3rem);
+    margin-right: 1rem;
+    transition: .3s;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+  }
+}
+
+.coin-details {
+  p {
+    font-size: 1rem;
+    margin: 1rem;
+    color: $black;
+  }
+}
+  
+.coin-details {
+  p {
+    color: $black;
+  }
+
+  a {
+    color: $black;
+  }
+}
+
+.coin-contract {
+  @extend %margins-coin;
+}
+
+.coin-links {
+  @extend %margins-coin;
+}
+
+.coin-price {
+  p {
+    @extend %margins-coin;
+  }
+}
+
+.coin-price {
+  font-size: 1.1rem;
+}
+
+.coin-links {
+  @include flex-center();
+  @include height_and_wight(3vh, fit-content);
+  background: $black;
+  color: $white;
+  border-radius: .5rem;
+  padding: .5rem;
+}
+
+.coin-links a {
+  margin-left: 0.5rem;
+  color: $white;
+}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
+import './style/get-api-style.scss';
 import axios from 'axios';
-import './style/get-api-style.css'
+
+import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md';
 
 export const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
 export const INTERVAL_TIME = 1000;

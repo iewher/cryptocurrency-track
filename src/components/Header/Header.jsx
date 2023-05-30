@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
+import './style/header-style.scss';
+
 import { Link } from 'react-router-dom';
-import './style/header-style.css'
 import { ShowSearch } from '../Search/Search';
 
 export default function Header() {

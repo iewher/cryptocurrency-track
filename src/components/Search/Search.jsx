@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import './style/search-style.scss';
 import { Link } from 'react-router-dom';
-import './style/search-style.css';
 import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md';
 import { Line } from 'react-chartjs-2';
 import { CategoryScale, LinearScale, Chart, registerables } from 'chart.js';
@@ -8,7 +8,6 @@ import { CategoryScale, LinearScale, Chart, registerables } from 'chart.js';
 const API_URL_SEARCH = 'https://api.coingecko.com/api/v3/coins';
 
 const fetchData = (coin) => {
-
   return fetch(`${API_URL_SEARCH}/${coin}`)
     .then((res) => res.json())
     .then((data) => {

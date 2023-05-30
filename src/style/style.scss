@@ -1,4 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Inter:wght@300;500&family=Poppins:wght@300&family=Roboto:wght@300&family=Source+Sans+Pro:wght@300&family=Ysabeau:wght@300&display=swap');
+
+@mixin flex($display, $justify-content, $align-items) {
+  display: $display;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin positions {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+$white: #fff;
+$black: #000;
+$shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+
 * {
     margin: 0;
     padding: 0;
@@ -7,27 +25,22 @@
 }
 
 .container {
-    display: block;
-    justify-content: center;
-    align-items: center;
+    @include flex(block, center, center);
+    @include positions();
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: white;
+    background: $white;
     overflow-y: scroll;
 }
 
 .container::-webkit-scrollbar {
-    background: white;
+    background: $white;
     border-radius: 10px;
-    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+    box-shadow: $shadow;
     width: 7px;
   }
   
   .container::-webkit-scrollbar-thumb {
-    background: black;
+    background: $black;
     border-radius: 10px;
     height: 5vh;
   }

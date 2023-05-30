@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
-import './style/get-api-style.css'
+import './style/get-api-style.scss';
+
+import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md';
 
 export function GET_SELECTION_COIN() {
     const [storedCoins, setStoredCoins] = useState([]);

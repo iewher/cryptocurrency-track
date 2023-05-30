@@ -1,11 +1,10 @@
 import React from 'react'
-import './style/home-style.css';
-import Header from '../../../components/Header/Header'
-import Bottom from '../../../components/Bottom/Bottom'
-import screen_imac from './source/screen-imac.png'
-import screen_macbook from './source/screen-macbook.png'
-import screen_iphone from './source/screen-iphone.png'
-import screen_ipad from './source/screen-ipad.png'
+import './style/home-style.scss';
+
+import screen_imac from './source/screen-imac.png';
+import screen_macbook from './source/screen-macbook.png';
+import screen_iphone from './source/screen-iphone.png';
+import screen_ipad from './source/screen-ipad.png';
 
 export default function Home() {
   return (

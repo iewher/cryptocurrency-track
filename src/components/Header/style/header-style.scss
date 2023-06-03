@@ -15,6 +15,11 @@
   width: $width;
 }
 
+@mixin buttons ($font-size, $margin) {
+  font-size: $font-size;
+  margin: $margin;
+}
+
 $white: #fff;
 $black: #000;
 $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
@@ -27,6 +32,18 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   border: none;
   border-radius: .5rem;
   transition: .3s;
+
+  @media (max-width: 415px) {
+    @include buttons(12px, .5rem)
+  }
+
+  @media (max-width: 391px) {
+    @include buttons(11px, .5rem)
+  }
+
+  @media (max-width: 376px) {
+    @include buttons(10px, .5rem);
+  }
 }
 
 %hovers {
@@ -41,20 +58,26 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     box-shadow: $shadow;
     padding: 1rem;
     margin: 1rem;
+
+    @media (max-width: 821px){
+      @include flex-center();
+      flex-direction: column;
+    }
+    
+    @media (max-width: 376px), (max-width: 415px) {
+      @include flex-center();
+    }
   }
   
   .header-name {
-    flex-basis: 100%;
     text-align: center;
   }
   
   .header-buttons {
-    flex-basis: 100%;
     @include flex-space-between();
   }
   
   .header-input {
-    flex-basis: 100%;
     @include flex-center();
   }
   
@@ -81,46 +104,3 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   .header-button-check:hover {
     @extend %hovers;
   }
-  
-  @media (min-width: 786px) {
-    .header-name {
-      flex-basis: 50%;
-    }
-    
-    .header-buttons {
-      flex-basis: 50%;
-    }
-    
-    .header-input {
-      flex-basis: 100%;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .header-name {
-      flex-basis: 30%;
-    }
-    
-    .header-buttons {
-      flex-basis: 40%;
-    }
-    
-    .header-input {
-      flex-basis: 30%;
-    }
-  }
-
-  @media (min-width: 1920px) {
-    .header-name {
-      flex-basis: 10%;
-    }
-    
-    .header-buttons {
-      flex-basis: 40%;
-    }
-    
-    .header-input {
-      flex-basis: 30%;
-    }
-  }
-  

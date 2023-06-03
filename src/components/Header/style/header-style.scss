@@ -33,6 +33,10 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   border-radius: .5rem;
   transition: .3s;
 
+  @media (max-width: 821px) {
+    @include buttons(14px, .5rem)
+  }
+
   @media (max-width: 415px) {
     @include buttons(12px, .5rem)
   }

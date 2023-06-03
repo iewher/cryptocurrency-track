@@ -17,15 +17,15 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   box-shadow: $shadow;
   margin: 1rem;
   min-height: 75%;
-}
 
-.check-body {
-  @include flex-center();
-  @include height_and_wight(auto, 99%);
-  flex-direction: column;
-}
+  &-body {
+    @include flex-center();
+    @include height_and_wight(auto, 99%);
+    flex-direction: column;
+  }
 
-.check-table {
-  @include height_and_wight(auto, 100%);
-  margin-bottom: 20px;
+  &-table {
+    @include height_and_wight(auto, 100%);
+    margin-bottom: 20px;
+  }
 }

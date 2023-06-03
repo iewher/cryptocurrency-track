@@ -42,10 +42,10 @@ $black: #000;
     margin-right: 5px;
     vertical-align: middle;
     transition: .3s;
-  }
 
-  .image-tokens:hover {
-    transform: scale(1.5);
+    &:hover {
+      transform: scale(1.5);
+    }
   }
 
   .gray-text {

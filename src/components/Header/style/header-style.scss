@@ -63,6 +63,18 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     padding: 1rem;
     margin: 1rem;
 
+    &-name {
+      text-align: center;
+    }
+
+    &-buttons {
+      @include flex-space-between();
+    }
+
+    &-input {
+      @include flex-center();
+    }
+
     @media (max-width: 821px){
       @include flex-center();
       flex-direction: column;
@@ -73,38 +85,26 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     }
   }
   
-  .header-name {
-    text-align: center;
-  }
-  
-  .header-buttons {
-    @include flex-space-between();
-  }
-  
-  .header-input {
-    @include flex-center();
-  }
-  
   .header-button-home {
     @extend %buttons;
+
+    &:hover {
+      @extend %hovers;
+    }
   }
 
   .header-button-top-100 {
     @extend %buttons;
+    
+    &:hover {
+      @extend %hovers;
+    }
   }
 
   .header-button-check {
     @extend %buttons;
-  }
-
-  .header-button-home:hover {
-    @extend %hovers;
-  }
-
-  .header-button-top-100:hover {
-    @extend %hovers;
-  }
-
-  .header-button-check:hover {
-    @extend %hovers;
+    
+    &:hover {
+      @extend %hovers;
+    }
   }

@@ -30,6 +30,10 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   box-shadow: $shadow;
   padding: 1rem;
   margin: 1rem;
+
+  @media (max-width: 819px) {
+    text-align: center;
+  }
 }
 
 .bottom-rights {

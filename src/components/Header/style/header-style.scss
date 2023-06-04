@@ -25,6 +25,7 @@ $black: #000;
 $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 
 %buttons {
+  @include buttons(16px, .5rem);
   padding: 10px 20px;
   font-size: 16px;
   background: $white;
@@ -75,6 +76,32 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
       @include flex-center();
     }
 
+    &-button {
+      &-home {
+        @extend %buttons;
+
+        &:hover {
+          @extend %hovers;
+        }
+      }
+
+      &-top-100 {
+        @extend %buttons;
+    
+        &:hover {
+          @extend %hovers;
+        }
+      }
+
+      &-check {
+        @extend %buttons;
+    
+        &:hover {
+          @extend %hovers;
+        }
+      }
+    }
+
     @media (max-width: 821px){
       @include flex-center();
       flex-direction: column;
@@ -82,29 +109,5 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     
     @media (max-width: 376px), (max-width: 415px) {
       @include flex-center();
-    }
-  }
-  
-  .header-button-home {
-    @extend %buttons;
-
-    &:hover {
-      @extend %hovers;
-    }
-  }
-
-  .header-button-top-100 {
-    @extend %buttons;
-    
-    &:hover {
-      @extend %hovers;
-    }
-  }
-
-  .header-button-check {
-    @extend %buttons;
-    
-    &:hover {
-      @extend %hovers;
     }
   }

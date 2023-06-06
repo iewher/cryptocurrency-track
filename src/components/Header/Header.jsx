@@ -7,8 +7,8 @@ import { ShowSearch } from '../Search/Search';
 export default function Header() {
   return (
     <div className='header'>
-        <div className='-header-name'>
-          Cryptocurrency track
+        <div className='header-name'>
+          <p>Cryptocurrency track</p>
         </div>
         <div className='header-buttons'>
           <Link to='/'>

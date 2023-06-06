@@ -37,16 +37,36 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 
   &-rights {
     color: $black;
+
+    p {
+      font-size: clamp(12px, 2vw, 16px);
+    }
   }
 
   &-git {
     @extend %telegram-git;
     @include hover();
+
+    @media (max-width: 1024px) {
+      @include height_and_wight(4vh, 4vw);
+    }
+
+    @media (max-width: 768px) {
+      @include height_and_wight(5vh, 5vw);
+    }
   }
   
   &-telegram {
     @extend %telegram-git;
     @include hover();
+
+    @media (max-width: 1024px) {
+      @include height_and_wight(4vh, 4vw);
+    }
+
+    @media (max-width: 768px) {
+      @include height_and_wight(5vh, 5vw);
+    }
   } 
 
   @media (max-width: 819px) {
@@ -56,30 +76,4 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 
 .icons {
   @include height_and_wight(100%, 100%);
-}
-
-@media (max-width: 768px) {
-  .bottom-rights {
-    font-size: 12px;
-  }
-
-  .bottom-git, .bottom-telegram {
-    @include height_and_wight(5vh, 5vw);
-  }
-}
-
-@media (max-width: 1024px) {
-  .bottom-rights {
-    font-size: 14px;
-  }
-
-  .bottom-git, .bottom-telegram {
-    @include height_and_wight(4vh, 4vw);
-  }
-}
-
-@media (max-width: 1920px) {
-  .bottom-rights {
-    font-size: 16px;
-  }
 }

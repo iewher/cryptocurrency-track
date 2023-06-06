@@ -12,7 +12,7 @@ export default function Bottom() {
   return (
     <div className='bottom'>
       <div className='bottom-rights'>
-        © 2023 Cryptocurrency track. All rights reserved
+        <p>© 2023 Cryptocurrency track. All rights reserved</p>
       </div>
       <Link to={URL_GIT}>
         <button className='bottom-git'>

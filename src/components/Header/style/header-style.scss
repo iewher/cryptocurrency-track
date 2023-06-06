@@ -15,40 +15,19 @@
   width: $width;
 }
 
-@mixin buttons ($font-size, $margin) {
-  font-size: $font-size;
-  margin: $margin;
-}
-
 $white: #fff;
 $black: #000;
 $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 
 %buttons {
-  @include buttons(16px, .5rem);
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: clamp(11px, 1vw, 16px);
   background: $white;
   color: $black;
   border: none;
   border-radius: .5rem;
   transition: .3s;
-
-  @media (max-width: 821px) {
-    @include buttons(14px, .5rem)
-  }
-
-  @media (max-width: 415px) {
-    @include buttons(12px, .5rem)
-  }
-
-  @media (max-width: 391px) {
-    @include buttons(11px, .5rem)
-  }
-
-  @media (max-width: 376px) {
-    @include buttons(10px, .5rem);
-  }
+  margin: .5rem;
 }
 
 %hovers {
@@ -66,6 +45,30 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 
     &-name {
       text-align: center;
+
+      p {
+        overflow: hidden;
+        border-right: .15em solid $black;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .15em;
+        animation: typing 10s steps(40, end) infinite,
+           blink-caret .75s step-end infinite;
+        animation-delay: 2s, 12s;
+      }
+
+      @keyframes typing {
+        0% { width: 0 }
+        25% { width: 100% }
+        50% { width: 50% }
+        75% { width: 100%; border-right-color: transparent; }
+        100% { width: 100%; border-right-color: $black; }
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: $black; }
+      }
     }
 
     &-buttons {

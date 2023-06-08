@@ -28,6 +28,10 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   border-radius: .5rem;
   transition: .3s;
   margin-left: .5rem;
+
+  @media (max-width: 821px) {
+    margin: .5rem auto;
+  }
 }
 
 %hovers {
@@ -106,6 +110,21 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
           @extend %hovers;
         }
       }
+    }
+
+    &-settings {
+      @include height_and_wight(40px, 40px);
+      border-radius: 50%;
+      border: none;
+      font-size: 1rem;
+
+      @media (max-width: 821px) {
+        margin: .5rem;
+      }
+    }
+
+    @media (max-width: 930px) {
+      position: static;
     }
 
     @media (max-width: 821px){

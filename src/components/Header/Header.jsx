@@ -1,5 +1,6 @@
 import React from 'react';
 import './style/header-style.scss';
+import { AiOutlineUser } from 'react-icons/ai';
 
 import { Link } from 'react-router-dom';
 import { ShowSearch } from '../Search/Search';
@@ -22,6 +23,9 @@ export default function Header() {
           </Link>
         </div>
         <ShowSearch />
+        <div className="header-user">
+          <button className='header-settings'><AiOutlineUser /></button>
+        </div>
     </div>
   )
 }

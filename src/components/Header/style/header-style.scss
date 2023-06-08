@@ -117,9 +117,48 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
       border-radius: 50%;
       border: none;
       font-size: 1rem;
+      cursor: pointer;
 
       @media (max-width: 821px) {
         margin: .5rem;
+      }
+    }
+
+    &-menu, &-auth, &-login {
+      @include height_and_wight(300px, 300px);
+      @include flex-center();
+      flex-direction: column;
+      padding: 1rem;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: $white;
+      border-radius: .5rem;
+      border: 1px solid $black;
+
+      button {
+        @include height_and_wight(2rem, 75%);
+        margin: .5rem;
+        background: $black;
+        color: $white;
+        border-radius: .5rem;
+        transition: .3s;
+        border: none;
+
+        &:hover {
+          background: $white;
+          color: $black;
+          border: 1px solid $black;
+        }
+      }
+
+      input {
+        @include height_and_wight(2rem, 75%);
+        border-radius: .5rem;
+        border: 1px solid $black;
+        margin: .5rem;
+        text-indent: .5rem;
       }
     }
 

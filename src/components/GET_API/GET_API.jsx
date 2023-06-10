@@ -3,6 +3,8 @@ import './style/get-api-style.scss';
 import axios from 'axios';
 
 import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md';
+import { ClockLoader } from 'react-spinners';
+// import { LoaderExampleLoader } from '../Loader/Loader';
 
 export const API_URL = 'https://min-api.cryptocompare.com/data/top/mktcapfull';
 export const INTERVAL_TIME = 1000;
@@ -159,7 +161,7 @@ export function GET_TOP_100() {
       
       return (
         <div>
-            {data.length > 0 ? renderTable() : <p className='loading'>Loading...</p>}
+            {data.length > 0 ? renderTable() : <div className='loading'> <ClockLoader color="#000" /></div>}
         </div>
       )
 }

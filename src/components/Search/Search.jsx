@@ -33,15 +33,14 @@ export const ShowSearch = () => {
   };
 
   return (
-    <div>
+    <div className='search'>
         <input
           type='text'
           placeholder='Выберите монету'
           onChange={handleCoin}
-          className="search-input"
         />
         <Link to='/coin'>
-          <button onClick={handleSubmit} className="search-button">Найти</button>
+          <button onClick={handleSubmit}>Найти</button>
         </Link>
     </div>
   );

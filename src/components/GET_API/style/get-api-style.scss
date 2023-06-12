@@ -56,6 +56,7 @@ $black: #000;
   .loading {
     @include flex-center();
     font-size: 1rem;
+    margin-top: 1rem;
 
     @media (max-width: 679px) {
       text-align: center;

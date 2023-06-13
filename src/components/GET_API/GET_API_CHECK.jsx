@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './style/get-api-style.scss';
 
 import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md';
+import { ClockLoader } from 'react-spinners';
 
 export function GET_SELECTION_COIN() {
     const [storedCoins, setStoredCoins] = useState([]);
@@ -88,9 +89,11 @@ export function GET_SELECTION_COIN() {
         {storedCoins.length > 0 ? (
           renderTable()
         ) : (
-          <p className='loading'>
-            На данный момент вы не выбрали криптовалюты, которые хотите отслеживать
-          </p>
+          <div className='loading'>
+            <p>На данный момент вы не выбрали криптовалют, которые хотите отслеживать</p>
+            <ClockLoader />
+            <p>Ожидаем выбора</p>
+          </div>
         )}
       </div>
     );

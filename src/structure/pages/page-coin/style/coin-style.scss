@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-@mixin height_and_wight ($height, $width) {
+@mixin height_and_wight($height, $width) {
   height: $height;
   width: $width;
 }
@@ -34,11 +34,11 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 
   &-name {
     @include flex-center();
-    
+
     img {
       @include height_and_wight(3rem, 3rem);
       margin-right: 1rem;
-      transition: .3s;
+      transition: 0.3s;
 
       &:hover {
         transform: scale(1.05);
@@ -68,8 +68,8 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     @extend %margins-coin;
     background: $black;
     color: $white;
-    border-radius: .5rem;
-    padding: .5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
 
     a {
       margin-left: 0.5rem;

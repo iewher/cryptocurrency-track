@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-@mixin height_and_wight ($height, $width) {
+@mixin height_and_wight($height, $width) {
   height: $height;
   width: $width;
 }
@@ -13,93 +13,93 @@ $white: #fff;
 $black: #000;
 
 .scrollable {
-    overflow: auto;
+  overflow: auto;
+}
+
+table {
+  font-size: clamp(0.5rem, 0.9vw, 2rem);
+  width: 100%;
+  border-spacing: 0 1rem;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: center;
+  border: none;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.checkbox-coin {
+  margin: 0;
+  accent-color: $black;
+}
+
+.image-tokens {
+  @include height_and_wight(1rem, 1rem);
+  margin-right: 5px;
+  vertical-align: middle;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.5);
   }
-  
-  table {
-    font-size: clamp(.5rem, .9vw, 2rem);
-    width: 100%;
-    border-spacing: 0 1rem;
+}
+
+.gray-text {
+  color: gray;
+}
+
+.loading {
+  @include flex-center();
+  font-size: 1rem;
+  margin-top: 1rem;
+  flex-direction: column;
+
+  p {
+    margin: 1rem;
   }
-  
+
+  @media (max-width: 679px) {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
   th,
   td {
-    padding: 1rem;
-    text-align: center;
-    border: none;
+    padding: 5px;
   }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  .checkbox-coin {
-    margin: 0;
-    accent-color: $black;
-  }
-  
+
   .image-tokens {
     @include height_and_wight(1rem, 1rem);
-    margin-right: 5px;
-    vertical-align: middle;
-    transition: .3s;
+    margin-right: 3px;
+  }
+}
 
-    &:hover {
-      transform: scale(1.5);
-    }
+@media (max-width: 1024px) {
+  th,
+  td {
+    padding: 5px;
   }
 
-  .gray-text {
-    color: gray;
+  .image-tokens {
+    @include height_and_wight(1.2rem, 1.2rem);
+    margin-right: 3px;
+  }
+}
+
+@media (max-width: 1920px) {
+  th,
+  td {
+    padding: 5px;
   }
 
-  .loading {
-    @include flex-center();
-    font-size: 1rem;
-    margin-top: 1rem;
-    flex-direction: column;
-
-    p {
-      margin: 1rem;
-    }
-
-    @media (max-width: 679px) {
-      text-align: center;
-    }
+  .image-tokens {
+    @include height_and_wight(1.5rem, 1.5rem);
+    margin-right: 3px;
   }
-  
-  @media (max-width: 768px) {
-    th,
-    td {
-      padding: 5px;
-    }
-    
-    .image-tokens {
-      @include height_and_wight(1rem, 1rem);
-      margin-right: 3px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    th,
-    td {
-      padding: 5px;
-    }
-    
-    .image-tokens {
-      @include height_and_wight(1.2rem, 1.2rem);
-      margin-right: 3px;
-    }
-  }
-
-  @media (max-width: 1920px) {
-    th,
-    td {
-      padding: 5px;
-    }
-    
-    .image-tokens {
-      @include height_and_wight(1.5rem, 1.5rem);
-      margin-right: 3px;
-    }
-  }
+}

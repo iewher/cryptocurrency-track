@@ -4,13 +4,15 @@
   align-items: center;
 }
 
-@mixin height_and_wight ($height, $width) {
+@mixin height_and_wight($height, $width) {
   height: $height;
   width: $width;
 }
 
 @mixin hover {
-  &:hover {transform: scale(1.05);}
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 $white: #fff;
@@ -22,8 +24,8 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   background: $white;
   color: $black;
   border: none;
-  border-radius: .5rem;
-  transition: .3s;
+  border-radius: 0.5rem;
+  transition: 0.3s;
   margin-left: 1rem;
 }
 
@@ -55,7 +57,7 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
       @include height_and_wight(5vh, 5vw);
     }
   }
-  
+
   &-telegram {
     @extend %telegram-git;
     @include hover();
@@ -67,7 +69,7 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     @media (max-width: 768px) {
       @include height_and_wight(5vh, 5vw);
     }
-  } 
+  }
 
   @media (max-width: 819px) {
     text-align: center;

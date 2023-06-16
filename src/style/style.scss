@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Inter:wght@300;500&family=Poppins:wght@300&family=Roboto:wght@300&family=Source+Sans+Pro:wght@300&family=Ysabeau:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Inter:wght@300;500&family=Poppins:wght@300&family=Roboto:wght@300&family=Source+Sans+Pro:wght@300&family=Ysabeau:wght@300&display=swap");
 
 @mixin flex($display, $justify-content, $align-items) {
   display: $display;
@@ -18,30 +18,30 @@ $black: #000;
 $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter';
-    box-sizing: border-box;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter";
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .container {
-    @include flex(block, center, center);
-    @include positions();
-    position: fixed;
-    background: $white;
-    overflow-y: scroll;
+  @include flex(block, center, center);
+  @include positions();
+  position: fixed;
+  background: $white;
+  overflow-y: scroll;
 
-    &::-webkit-scrollbar {
-      background: $white;
+  &::-webkit-scrollbar {
+    background: $white;
+    border-radius: 10px;
+    box-shadow: $shadow;
+    width: 7px;
+
+    &-thumb {
+      background: $black;
       border-radius: 10px;
-      box-shadow: $shadow;
-      width: 7px;
-      
-      &-thumb {
-        background: $black;
-        border-radius: 10px;
-        height: 5vh;
-      }
+      height: 5vh;
     }
+  }
 }

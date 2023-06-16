@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const API_URL = 'https://min-api.cryptocompare.com/data/pricemultifull';
+export const API_URL = "https://min-api.cryptocompare.com/data/pricemultifull";
 
 const fetchData = async (coin, currency) => {
   try {

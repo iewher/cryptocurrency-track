@@ -17,9 +17,9 @@ Cryptocurrenc-track - сайт, посвященный криптовалюте,
 
 <div align="center">
   
-<image src="src/structure/pages/page-home/source/screen-imac.png" height="420" width="550">
+<image src="src/components/page-home/source/screen-imac.png" height="420" width="550">
 
-<image src="src/structure/pages/page-home/source/screen-iphone.png" height="450" width="250">
+<image src="src/components/page-home/source/screen-iphone.png" height="450" width="250">
   
 </div>
 

@@ -38,7 +38,7 @@ $shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     img {
       @include height_and_wight(3rem, 3rem);
       margin-right: 1rem;
-      transition: 0.3s;
+      transition: 0.2s;
 
       &:hover {
         transform: scale(1.05);

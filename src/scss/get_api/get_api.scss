@@ -42,7 +42,7 @@ th {
   @include height_and_wight(1rem, 1rem);
   margin-right: 5px;
   vertical-align: middle;
-  transition: 0.3s;
+  transition: 0.2s;
 
   &:hover {
     transform: scale(1.5);

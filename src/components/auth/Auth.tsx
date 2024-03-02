@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 import "../../scss/auth/auth.scss";
 
 export const Auth = () => {

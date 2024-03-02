@@ -1,9 +1,8 @@
-import React from "react";
 import screen_imac from "./source/screen-imac.png";
 import screen_macbook from "./source/screen-macbook.png";
 import screen_iphone from "./source/screen-iphone.png";
 import screen_ipad from "./source/screen-ipad.png";
-import "../../scss/home/home.scss";
+import "../../../scss/home/home.scss";
 
 export default function Home() {
   const images = [

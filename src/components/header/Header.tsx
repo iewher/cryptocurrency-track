@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Auth } from "../auth/Auth";
 import { Link } from "react-router-dom";
 import { ShowSearch } from "../search/Search";

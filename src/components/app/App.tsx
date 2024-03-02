@@ -1,11 +1,10 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
-import Home from "../page-home/Home";
-import Top100 from "../page-top-100/Top100";
-import Check from "../page-check/Check";
-import Coin from "../page-coin/Coin";
+import Home from "../pages/page-home/Home";
+import Top100 from "../pages/page-top-100/Top100";
+import Check from "../pages/page-check/Check";
+import Coin from "../pages/page-coin/Coin";
 import "../../scss/app/app.scss";
 
 function App() {

@@ -1,6 +1,5 @@
-import React from "react";
-import { GET_TOP_100 } from "../get_api/GET_API";
-import "../../scss/top-100/top-100.scss";
+import { GET_TOP_100 } from "../../get_api/GET_API";
+import "../../../scss/top-100/top-100.scss";
 
 export default function Top100() {
   return (

@@ -46,7 +46,7 @@ export function GET_TOP_100() {
   const handleCheckboxChange = (coin: any) => {
     const updatedCoins: any = [...selectedCoins];
     const coinIndex: any = updatedCoins.findIndex(
-      (selectedCoin: any) => selectedCoin.CoinInfo.Id === coin.CoinInfo.Id
+      (selectedCoin: any) => selectedCoin.CoinInfo.Id === coin.CoinInfo.Id,
     );
 
     if (coinIndex === -1) {
@@ -56,7 +56,7 @@ export function GET_TOP_100() {
     }
 
     const checkedCoins = updatedCoins.filter(
-      (selectedCoin: any) => selectedCoin.checked
+      (selectedCoin: any) => selectedCoin.checked,
     );
     setSelectedCoins(updatedCoins);
 
@@ -72,7 +72,7 @@ export function GET_TOP_100() {
     if (storedCoins) {
       const parsedCoins = JSON.parse(storedCoins);
       return parsedCoins.some(
-        (storedCoin: any) => storedCoin.CoinInfo.Id === coin.CoinInfo.Id
+        (storedCoin: any) => storedCoin.CoinInfo.Id === coin.CoinInfo.Id,
       );
     }
     return false;

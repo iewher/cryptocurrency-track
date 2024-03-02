@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 import { ClockLoader } from "react-spinners";
 import "../../scss/get_api/get_api.scss";
 
-export function GET_SELECTION_COIN() {
+const GET_SELECTION_COIN = () => {
   const [storedCoins, setStoredCoins] = useState([]);
 
   useEffect(() => {
@@ -114,4 +114,6 @@ export function GET_SELECTION_COIN() {
       )}
     </div>
   );
-}
+};
+
+export default GET_SELECTION_COIN;

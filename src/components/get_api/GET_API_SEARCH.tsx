@@ -11,7 +11,6 @@ const fetchData = async (coin: string, currency: string) => {
       },
     });
     const data = response.data;
-    // console.log(data);
     return data;
   } catch (error) {
     console.error(error);

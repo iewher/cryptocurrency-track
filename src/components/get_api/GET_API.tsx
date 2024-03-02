@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";

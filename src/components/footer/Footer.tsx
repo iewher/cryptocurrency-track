@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { BsTelegram, BsGithub } from "react-icons/bs";
 import "../../scss/footer/footer.scss";
 
-const URL_GIT: string = "https://github.com/iewher/cryptocurrency-track";
-const URL_TG: string = "https://t.me/iewher";
+const URL_GIT = "https://github.com/iewher/cryptocurrency-track";
+const URL_TG = "https://t.me/iewher";
 
 const Footer = () => {
   return (

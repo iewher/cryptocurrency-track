@@ -4,9 +4,9 @@ import { Modal } from "antd";
 import "../../scss/auth/auth.scss";
 
 const Auth = () => {
-  const [modalOpenAuth, setModalOpenAuth] = useState<boolean>(false);
-  const [modalOpenLogin, setModalOpenLogin] = useState<boolean>(false);
-  const [modalOpenReg, setModalOpenReg] = useState<boolean>(false);
+  const [modalOpenAuth, setModalOpenAuth] = useState(false);
+  const [modalOpenLogin, setModalOpenLogin] = useState(false);
+  const [modalOpenReg, setModalOpenReg] = useState(false);
 
   const handleLogin = () => {
     setModalOpenAuth(false);

@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";
+import { Coin } from "./types";
 import "../../scss/get_api/get_api.scss";
 
 export const API_URL = "https://min-api.cryptocompare.com/data/top/mktcapfull";
@@ -10,7 +11,7 @@ export const LOCAL_STORAGE_KEY = "cryptoData";
 
 const GET_TOP_100 = () => {
   const [data, setData] = useState([]);
-  const [selectedCoins, setSelectedCoins] = useState([]);
+  const [selectedCoins, setSelectedCoins] = useState<Coin[]>([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,14 +41,16 @@ const GET_TOP_100 = () => {
   };
 
   const selectedCoinIds = useMemo(() => {
-    return selectedCoins.map((coin: any) => coin.CoinInfo.Id);
+    return selectedCoins.map((coin: Coin) => coin.CoinInfo.Id);
   }, [selectedCoins]);
 
-  const handleCheckboxChange = (coin: any) => {
-    const updatedCoins: any = [...selectedCoins];
-    const coinIndex: any = updatedCoins.findIndex(
-      (selectedCoin: any) => selectedCoin.CoinInfo.Id === coin.CoinInfo.Id,
+  const handleCheckboxChange = (coin: Coin) => {
+    const updatedCoins: Coin[] = [...selectedCoins];
+    const coinIndex = updatedCoins.findIndex(
+      (selectedCoin: Coin) => selectedCoin.CoinInfo.Id === coin.CoinInfo.Id
     );
+
+    console.log(updatedCoins)
 
     if (coinIndex === -1) {
       updatedCoins.push({ ...coin, checked: true });
@@ -56,7 +59,7 @@ const GET_TOP_100 = () => {
     }
 
     const checkedCoins = updatedCoins.filter(
-      (selectedCoin: any) => selectedCoin.checked,
+      (selectedCoin: Coin) => selectedCoin.checked
     );
     setSelectedCoins(updatedCoins);
 
@@ -67,12 +70,12 @@ const GET_TOP_100 = () => {
     }
   };
 
-  const wasCheckboxChecked = (coin: any) => {
+  const wasCheckboxChecked = (coin: Coin) => {
     const storedCoins = localStorage.getItem("myObjects");
     if (storedCoins) {
       const parsedCoins = JSON.parse(storedCoins);
       return parsedCoins.some(
-        (storedCoin: any) => storedCoin.CoinInfo.Id === coin.CoinInfo.Id,
+        (storedCoin: Coin) => storedCoin.CoinInfo.Id === coin.CoinInfo.Id
       );
     }
     return false;
@@ -94,7 +97,7 @@ const GET_TOP_100 = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((coin: any, index: any) => (
+            {data.map((coin: Coin, index) => (
               <tr key={coin.CoinInfo.Id}>
                 <td>
                   <input
@@ -130,7 +133,7 @@ const GET_TOP_100 = () => {
                     color:
                       coin.DISPLAY &&
                       coin.DISPLAY.USD &&
-                      coin.DISPLAY.USD.CHANGEPCTHOUR >= 0
+                      coin.DISPLAY.USD.CHANGEPCTHOUR >= '0'
                         ? "#00FA9A"
                         : "#DC143C",
                   }}
@@ -141,7 +144,7 @@ const GET_TOP_100 = () => {
                   %
                   {coin.DISPLAY &&
                   coin.DISPLAY.USD &&
-                  coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? (
+                  coin.DISPLAY.USD.CHANGEPCTHOUR >= '0' ? (
                     <MdArrowDropUp />
                   ) : (
                     <MdArrowDropDown />
@@ -152,7 +155,7 @@ const GET_TOP_100 = () => {
                     color:
                       coin.DISPLAY &&
                       coin.DISPLAY.USD &&
-                      coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0
+                      coin.DISPLAY.USD.CHANGEPCT24HOUR >= '0'
                         ? "#00FA9A"
                         : "#DC143C",
                   }}
@@ -163,7 +166,7 @@ const GET_TOP_100 = () => {
                   %
                   {coin.DISPLAY &&
                   coin.DISPLAY.USD &&
-                  coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? (
+                  coin.DISPLAY.USD.CHANGEPCT24HOUR >= '0' ? (
                     <MdArrowDropUp />
                   ) : (
                     <MdArrowDropDown />

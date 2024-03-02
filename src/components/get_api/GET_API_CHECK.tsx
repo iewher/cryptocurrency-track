@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 import { ClockLoader } from "react-spinners";
+import { Coin } from "./types";
 import "../../scss/get_api/get_api.scss";
 
 const GET_SELECTION_COIN = () => {
@@ -28,7 +29,7 @@ const GET_SELECTION_COIN = () => {
             </tr>
           </thead>
           <tbody>
-            {storedCoins.map((coin: any, index: any) => (
+            {storedCoins.map((coin: Coin, index) => (
               <tr key={coin.CoinInfo.Id}>
                 <td>{index + 1}</td>
                 <td>
@@ -40,26 +41,17 @@ const GET_SELECTION_COIN = () => {
                   {coin.CoinInfo.FullName} |{" "}
                   <span className="gray-text">{coin.CoinInfo.Name}</span>
                 </td>
-                <td>
-                  {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.PRICE}
-                </td>
+                <td>{coin.DISPLAY.USD.PRICE}</td>
                 <td
                   style={{
                     color:
-                      coin.DISPLAY &&
-                      coin.DISPLAY.USD &&
-                      coin.DISPLAY.USD.CHANGEPCTHOUR >= 0
+                      coin.DISPLAY.USD.CHANGEPCTHOUR >= "0"
                         ? "#00FA9A"
                         : "#DC143C",
                   }}
                 >
-                  {coin.DISPLAY &&
-                    coin.DISPLAY.USD &&
-                    coin.DISPLAY.USD.CHANGEPCTHOUR}
-                  %
-                  {coin.DISPLAY &&
-                  coin.DISPLAY.USD &&
-                  coin.DISPLAY.USD.CHANGEPCTHOUR >= 0 ? (
+                  {coin.DISPLAY.USD.CHANGEPCTHOUR}%
+                  {coin.DISPLAY.USD.CHANGEPCTHOUR >= "0" ? (
                     <MdArrowDropUp />
                   ) : (
                     <MdArrowDropDown />
@@ -68,28 +60,19 @@ const GET_SELECTION_COIN = () => {
                 <td
                   style={{
                     color:
-                      coin.DISPLAY &&
-                      coin.DISPLAY.USD &&
-                      coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0
+                      coin.DISPLAY.USD.CHANGEPCT24HOUR >= "0"
                         ? "#00FA9A"
                         : "#DC143C",
                   }}
                 >
-                  {coin.DISPLAY &&
-                    coin.DISPLAY.USD &&
-                    coin.DISPLAY.USD.CHANGEPCT24HOUR}
-                  %
-                  {coin.DISPLAY &&
-                  coin.DISPLAY.USD &&
-                  coin.DISPLAY.USD.CHANGEPCT24HOUR >= 0 ? (
+                  {coin.DISPLAY.USD.CHANGEPCT24HOUR}%
+                  {coin.DISPLAY.USD.CHANGEPCT24HOUR >= "0" ? (
                     <MdArrowDropUp />
                   ) : (
                     <MdArrowDropDown />
                   )}
                 </td>
-                <td>
-                  {coin.DISPLAY && coin.DISPLAY.USD && coin.DISPLAY.USD.MKTCAP}
-                </td>
+                <td>{coin.DISPLAY.USD.MKTCAP}</td>
               </tr>
             ))}
           </tbody>
@@ -98,22 +81,18 @@ const GET_SELECTION_COIN = () => {
     );
   };
 
-  return (
-    <div>
-      {storedCoins.length > 0 ? (
-        renderTable()
-      ) : (
-        <div className="loading">
-          <p>
-            На данный момент вы не выбрали криптовалют, которые хотите
-            отслеживать
-          </p>
-          <ClockLoader />
-          <p>Ожидаем выбора</p>
-        </div>
-      )}
-    </div>
-  );
+  if (!storedCoins)
+    return (
+      <div className="loading">
+        <p>
+          На данный момент вы не выбрали криптовалют, которые хотите отслеживать
+        </p>
+        <ClockLoader />
+        <p>Ожидаем выбора</p>
+      </div>
+    );
+
+  return renderTable();
 };
 
 export default GET_SELECTION_COIN;

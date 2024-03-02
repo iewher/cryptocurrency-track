@@ -4,7 +4,6 @@ import Footer from "../footer/Footer";
 import Home from "../pages/page-home/Home";
 import Top100 from "../pages/page-top-100/Top100";
 import Check from "../pages/page-check/Check";
-import Coin from "../pages/page-coin/Coin";
 import "../../scss/app/app.scss";
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/top-100" element={<Top100 />} />
           <Route path="/check" element={<Check />} />
-          <Route path="/coin" element={<Coin />} />
         </Routes>
         <Footer />
       </div>

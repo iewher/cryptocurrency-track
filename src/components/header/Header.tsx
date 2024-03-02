@@ -1,6 +1,5 @@
 import Auth from "../auth/Auth";
 import { Link } from "react-router-dom";
-import { ShowSearch } from "../search/Search";
 import "../../scss/header/header.scss";
 
 const Header = () => {
@@ -20,7 +19,6 @@ const Header = () => {
           <button className="header-button-check">Отслеживаемое</button>
         </Link>
       </div>
-      <ShowSearch />
       <Auth />
     </div>
   );

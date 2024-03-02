@@ -1,74 +1,9 @@
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin flex-space-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@mixin height_and_wight($height, $width) {
-  height: $height;
-  width: $width;
-}
-
-$white: #fff;
-$black: #000;
-$shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
-
-.Auth {
-  &-menu,
-  &-signup,
-  &-login {
-    @include height_and_wight(300px, 300px);
-    @include flex-center();
-    flex-direction: column;
-    padding: 1rem;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: $white;
-    border-radius: 0.5rem;
-    border: 1px solid $black;
-
-    button {
-      @include height_and_wight(2rem, 75%);
-      margin: 0.5rem;
-      background: $black;
-      color: $white;
-      border-radius: 0.5rem;
-      transition: 0.2s;
-      border: none;
-
-      &:hover {
-        background: $white;
-        color: $black;
-        border: 1px solid $black;
-      }
-    }
-
-    input {
-      @include height_and_wight(2rem, 75%);
-      border-radius: 0.5rem;
-      border: 1px solid $black;
-      margin: 0.5rem;
-      text-indent: 0.5rem;
-    }
-  }
-
-  &-settings {
-    @include height_and_wight(40px, 40px);
+.auth-user {
+  button {
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
     border: none;
-    font-size: 1rem;
     cursor: pointer;
-
-    @media (max-width: 821px) {
-      margin: 0.5rem;
-    }
   }
 }

@@ -3,7 +3,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { Modal } from "antd";
 import "../../scss/auth/auth.scss";
 
-export const Auth = () => {
+const Auth = () => {
   const [modalOpenAuth, setModalOpenAuth] = useState<boolean>(false);
   const [modalOpenLogin, setModalOpenLogin] = useState<boolean>(false);
   const [modalOpenReg, setModalOpenReg] = useState<boolean>(false);
@@ -55,3 +55,5 @@ export const Auth = () => {
     </div>
   );
 };
+
+export default Auth;

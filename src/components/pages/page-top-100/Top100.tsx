@@ -1,7 +1,7 @@
-import { GET_TOP_100 } from "../../get_api/GET_API";
+import GET_TOP_100 from "../../get_api/GET_API";
 import "../../../scss/top-100/top-100.scss";
 
-export default function Top100() {
+const Top100 = () => {
   return (
     <div className="top-100">
       <div className="top-100-body">
@@ -12,4 +12,6 @@ export default function Top100() {
       </div>
     </div>
   );
-}
+};
+
+export default Top100;

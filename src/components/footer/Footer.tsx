@@ -1,13 +1,11 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { AiFillGithub } from "react-icons/ai";
-import { BsTelegram } from "react-icons/bs";
+import { BsTelegram, BsGithub } from "react-icons/bs";
 import "../../scss/footer/footer.scss";
 
 const URL_GIT: string = "https://github.com/iewher/cryptocurrency-track";
 const URL_TG: string = "https://t.me/iewher";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-rights">
@@ -15,7 +13,7 @@ export default function Footer() {
       </div>
       <Link to={URL_GIT}>
         <button className="footer-git">
-          <AiFillGithub className="icons" />
+          <BsGithub className="icons" />
         </button>
       </Link>
       <Link to={URL_TG}>
@@ -25,4 +23,6 @@ export default function Footer() {
       </Link>
     </div>
   );
-}
+};
+
+export default Footer;

@@ -4,7 +4,7 @@ import screen_iphone from "./source/screen-iphone.png";
 import screen_ipad from "./source/screen-ipad.png";
 import "../../../scss/home/home.scss";
 
-export default function Home() {
+const Home = () => {
   const images = [
     { image: screen_imac, width: "80%", height: "60%" },
     { image: screen_macbook, width: "80%", height: "50%" },
@@ -55,4 +55,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;

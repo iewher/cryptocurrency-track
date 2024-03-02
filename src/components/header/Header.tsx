@@ -1,9 +1,9 @@
-import { Auth } from "../auth/Auth";
+import Auth from "../auth/Auth";
 import { Link } from "react-router-dom";
 import { ShowSearch } from "../search/Search";
 import "../../scss/header/header.scss";
 
-export default function Header() {
+const Header = () => {
   return (
     <div className="header">
       <div className="header-name">
@@ -24,4 +24,6 @@ export default function Header() {
       <Auth />
     </div>
   );
-}
+};
+
+export default Header;

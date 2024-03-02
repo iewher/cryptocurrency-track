@@ -8,7 +8,7 @@ export const API_URL = "https://min-api.cryptocompare.com/data/top/mktcapfull";
 export const INTERVAL_TIME = 1000;
 export const LOCAL_STORAGE_KEY = "cryptoData";
 
-export function GET_TOP_100() {
+const GET_TOP_100 = () => {
   const [data, setData] = useState([]);
   const [selectedCoins, setSelectedCoins] = useState([]);
 
@@ -46,7 +46,7 @@ export function GET_TOP_100() {
   const handleCheckboxChange = (coin: any) => {
     const updatedCoins: any = [...selectedCoins];
     const coinIndex: any = updatedCoins.findIndex(
-      (selectedCoin: any) => selectedCoin.CoinInfo.Id === coin.CoinInfo.Id,
+      (selectedCoin: any) => selectedCoin.CoinInfo.Id === coin.CoinInfo.Id
     );
 
     if (coinIndex === -1) {
@@ -56,7 +56,7 @@ export function GET_TOP_100() {
     }
 
     const checkedCoins = updatedCoins.filter(
-      (selectedCoin: any) => selectedCoin.checked,
+      (selectedCoin: any) => selectedCoin.checked
     );
     setSelectedCoins(updatedCoins);
 
@@ -72,7 +72,7 @@ export function GET_TOP_100() {
     if (storedCoins) {
       const parsedCoins = JSON.parse(storedCoins);
       return parsedCoins.some(
-        (storedCoin: any) => storedCoin.CoinInfo.Id === coin.CoinInfo.Id,
+        (storedCoin: any) => storedCoin.CoinInfo.Id === coin.CoinInfo.Id
       );
     }
     return false;
@@ -192,4 +192,6 @@ export function GET_TOP_100() {
       )}
     </div>
   );
-}
+};
+
+export default GET_TOP_100;

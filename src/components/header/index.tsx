@@ -8,8 +8,8 @@ function Header() {
       </div>
       <div className={styles.Nav}>
         <a href="/">Главная</a>
-        <a href="/top-100">Топ-100</a>
-        <a href="/check">Отслеживаемое</a>
+        <a href="/table/100">Топ-100</a>
+        <a href="/table/check">Отслеживаемое</a>
       </div>
     </div>
   );

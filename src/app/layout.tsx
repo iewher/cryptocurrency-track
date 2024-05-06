@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import Header from "@/components/header";
-import "./globals.scss";
 import Footer from "@/components/footer";
+import "./globals.scss";
 
 export const metadata: Metadata = {
   title: "Cryptocurrency-track",

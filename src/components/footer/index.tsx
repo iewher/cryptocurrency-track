@@ -1,17 +1,22 @@
 import styles from "./index.module.scss";
 
-const Footer = () => {
+function Footer() {
   return (
     <div className={styles.Footer}>
-      <div className={styles.Rights}>
-        <p>© 2023 Cryptocurrency track. All rights reserved</p>
-      </div>
+      <p>© 2023 Cryptocurrency track. All rights reserved</p>
       <div className={styles.Links}>
-        <a href="https://github.com/iewher/cryptocurrency-track">Github</a>
-        <a href="https://t.me/iewher">Telegram</a>
+        <a
+          href="https://github.com/iewher/cryptocurrency-track"
+          target="_blank"
+        >
+          Github
+        </a>
+        <a href="https://t.me/iewher" target="_blank">
+          Telegram
+        </a>
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

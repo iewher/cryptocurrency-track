@@ -1,0 +1,33 @@
+.Table {
+  table {
+    width: 100%;
+
+    tr {
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+      }
+    }
+  }
+}
+
+.Title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  img {
+    height: 30px;
+    width: 30px;
+  }
+}

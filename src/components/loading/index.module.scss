@@ -1,0 +1,20 @@
+.Loading {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Loading > svg {
+  animation: loading 1s infinite linear;
+}
+
+@keyframes loading {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 90deg;
+  }
+}

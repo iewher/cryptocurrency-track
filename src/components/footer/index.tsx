@@ -1,19 +1,25 @@
+import { FaGithub, FaTelegram } from "react-icons/fa";
+import Link from "../link";
 import styles from "./index.module.scss";
 
 function Footer() {
   return (
     <div className={styles.Footer}>
-      <p>© 2023 Cryptocurrency track. All rights reserved</p>
+      <p>
+        © 2023 - {new Date().getFullYear()} Cryptocurrency track. All rights
+        reserved
+      </p>
       <div className={styles.Links}>
-        <a
+        <Link
+          icon={<FaGithub />}
           href="https://github.com/iewher/cryptocurrency-track"
-          target="_blank"
+          target
         >
           Github
-        </a>
-        <a href="https://t.me/iewher" target="_blank">
+        </Link>
+        <Link icon={<FaTelegram />} href="https://t.me/iewher" target>
           Telegram
-        </a>
+        </Link>
       </div>
     </div>
   );

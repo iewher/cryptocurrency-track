@@ -1,4 +1,7 @@
+import { FiEye, FiHome, FiTrendingUp } from "react-icons/fi";
+
 import Search from "../search";
+import Link from "../link";
 import styles from "./index.module.scss";
 
 function Header() {
@@ -9,9 +12,15 @@ function Header() {
       </div>
       <Search />
       <div className={styles.Nav}>
-        <a href="/">Главная</a>
-        <a href="/table/100">Топ-100</a>
-        <a href="/table/check">Отслеживаемое</a>
+        <Link href="/" icon={<FiHome />}>
+          Главная
+        </Link>
+        <Link href="/table/100" icon={<FiTrendingUp />}>
+          Топ-100
+        </Link>
+        <Link href="/table/check" icon={<FiEye />}>
+          Отслеживаемое
+        </Link>
       </div>
     </div>
   );

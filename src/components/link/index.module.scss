@@ -1,0 +1,19 @@
+.Link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Link > svg {
+  height: 15px;
+  width: 15px;
+}
+
+.Link > a {
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -6,7 +6,7 @@ import styles from "./index.module.scss";
 
 function Header() {
   return (
-    <div className={styles.Header}>
+    <header className={styles.Header}>
       <div className={styles.Logo}>
         <p>Cryptocurrency track</p>
       </div>
@@ -22,7 +22,7 @@ function Header() {
           Отслеживаемое
         </Link>
       </div>
-    </div>
+    </header>
   );
 }
 

@@ -4,7 +4,7 @@ import styles from "./index.module.scss";
 
 function Footer() {
   return (
-    <div className={styles.Footer}>
+    <footer className={styles.Footer}>
       <p>
         © 2023 - {new Date().getFullYear()} Cryptocurrency track. All rights
         reserved
@@ -21,7 +21,7 @@ function Footer() {
           Telegram
         </Link>
       </div>
-    </div>
+    </footer>
   );
 }
 

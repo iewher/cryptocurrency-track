@@ -1,11 +1,9 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { FiEye } from "react-icons/fi";
 
 import Loading from "../loading";
 import styles from "./index.module.scss";
 
-interface Data {
+export interface CoinProps {
   Data: {
     CoinInfo: {
       Algorithm: string;
@@ -31,17 +29,13 @@ interface Data {
   }[];
 }
 
-function Table() {
-  const [data, setData] = useState<Data>();
+interface TableProps {
+  data?: CoinProps;
+  checkedCoin?: CoinProps;
+  setCheckedCoin?: (checkedCoin: CoinProps) => void;
+}
 
-  useEffect(() => {
-    fetch(
-      "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=100&tsym=USD",
-    )
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
-
+function Table({ data, setCheckedCoin }: TableProps) {
   if (!data) return <Loading />;
 
   return (
@@ -49,6 +43,9 @@ function Table() {
       <table>
         <thead>
           <tr>
+            <th>
+              <FiEye />
+            </th>
             <th>#</th>
             <th>Название</th>
             <th>Цена</th>
@@ -60,54 +57,76 @@ function Table() {
         </thead>
 
         <tbody>
-          {data?.Data.map((c, index) => (
+          {data?.Data.map((coin, index) => (
             <tr key={index}>
+              <td>
+                <button
+                  onClick={() =>
+                    setCheckedCoin &&
+                    setCheckedCoin({
+                      Data: [
+                        {
+                          CoinInfo: coin.CoinInfo,
+                          RAW: coin.RAW,
+                          DISPLAY: coin.DISPLAY,
+                        },
+                      ],
+                    })
+                  }
+                >
+                  +
+                </button>
+              </td>
               <td>{index + 1}</td>
               <td className={styles.Title}>
                 <img
-                  src={`https://www.cryptocompare.com${c.CoinInfo.ImageUrl}`}
-                  alt={c.CoinInfo.FullName}
+                  src={`https://www.cryptocompare.com${coin.CoinInfo.ImageUrl}`}
+                  alt={coin.CoinInfo.FullName}
                 />
                 <a
-                  href={`https://www.cryptocompare.com${c.CoinInfo.Url}`}
+                  href={`https://www.cryptocompare.com${coin.CoinInfo.Url}`}
                   target="_blank"
                 >
-                  {c.CoinInfo.FullName}
+                  {coin.CoinInfo.FullName}
                 </a>
               </td>
               <td>
-                {c.DISPLAY && c.DISPLAY.USD && c.DISPLAY.USD.PRICE !== ""
-                  ? c.DISPLAY.USD.PRICE
+                {coin.DISPLAY &&
+                coin.DISPLAY.USD &&
+                coin.DISPLAY.USD.PRICE !== ""
+                  ? coin.DISPLAY.USD.PRICE
                   : "-"}{" "}
               </td>
               <td>
-                {c.RAW && c.RAW.USD && (
+                {coin.RAW && coin.RAW.USD && (
                   <p
                     style={{
                       color:
-                        c.RAW.USD.CHANGEPCTHOUR >= 0 ? "#00BC00" : "#EE204D",
+                        coin.RAW.USD.CHANGEPCTHOUR >= 0 ? "#00BC00" : "#EE204D",
                     }}
                   >
-                    {c.RAW.USD.CHANGEPCTHOUR.toFixed(2)} %
+                    {coin.RAW.USD.CHANGEPCTHOUR.toFixed(2)} %
                   </p>
                 )}
               </td>
               <td>
-                {c.RAW && c.RAW.USD && (
+                {coin.RAW && coin.RAW.USD && (
                   <p
                     style={{
                       color:
-                        c.RAW.USD.CHANGEPCTDAY >= 0 ? "#00BC00" : "#EE204D",
+                        coin.RAW.USD.CHANGEPCTDAY >= 0 ? "#00BC00" : "#EE204D",
                     }}
                   >
-                    {c.RAW.USD.CHANGEPCTDAY.toFixed(2)} %
+                    {coin.RAW.USD.CHANGEPCTDAY.toFixed(2)} %
                   </p>
                 )}
               </td>
               <td>
-                {c.CoinInfo.Algorithm !== "N/A" ? c.CoinInfo.Algorithm : "-"}
+                {coin.CoinInfo.Algorithm !== "N/A"
+                  ? coin.CoinInfo.Algorithm
+                  : "-"}
               </td>
-              <td>{c.CoinInfo.AssetLaunchDate}</td>
+              <td>{coin.CoinInfo.AssetLaunchDate}</td>
             </tr>
           ))}
         </tbody>

@@ -7,6 +7,12 @@
       td {
         border: 1px solid #ccc;
         padding: 8px;
+
+        button {
+          border: none;
+          background-color: inherit;
+          cursor: pointer;
+        }
       }
     }
   }

@@ -1,3 +1,20 @@
+![logo](public/logo.png)
+
+# Cryptocurrency-track
+
+Удобное отслеживание актуальной криптовалюты
+
+## Возможности
+
+1. Удобная таблица отслеживания топ-100 лучших монет
+2. Поиск
+3. Отслеживаемое
+
+## Обзор
+
+![review](public/forgit.png)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

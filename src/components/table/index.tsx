@@ -1,51 +1,107 @@
-import { FiEye } from "react-icons/fi";
+"use client";
 
 import Loading from "../loading";
+import { DataProps } from "@/lib";
 import styles from "./index.module.scss";
+import { useState } from "react";
 
-export interface CoinProps {
-  Data: {
-    CoinInfo: {
-      Algorithm: string;
-      FullName: string;
-      Internal: string;
-      AssetLaunchDate: string;
-      ImageUrl: string;
-      Url: string;
-    };
-    RAW: {
-      USD: {
-        PRICE: string;
-        CHANGEPCTHOUR: number;
-        CHANGEPCTDAY: number;
-      };
-    };
-    DISPLAY: {
-      USD: {
-        PRICE: string;
-        IMAGEURL: string;
-      };
-    };
-  }[];
+function Coin({
+  c,
+  index,
+  isCheck,
+  onClick,
+  isSelected,
+}: {
+  c: DataProps;
+  onClick: (coin: DataProps) => void;
+  isCheck: boolean;
+  index: number;
+  isSelected: boolean;
+}) {
+  const [isChecked, setIsChecked] = useState(isSelected ? true : false);
+  return (
+    <tr>
+      {!isCheck && (
+        <td className={styles.Checkbox}>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={() => {
+              onClick && onClick(c);
+              setIsChecked(isSelected ? false : true);
+            }}
+          />
+        </td>
+      )}
+      <td>{index + 1}</td>
+      <td className={styles.Title}>
+        <img
+          src={`https://www.cryptocompare.com${c.CoinInfo.ImageUrl}`}
+          alt={c.CoinInfo.FullName}
+        />
+        <a
+          href={`https://www.cryptocompare.com${c.CoinInfo.Url}`}
+          target="_blank"
+        >
+          {c.CoinInfo.FullName}
+        </a>
+      </td>
+      <td>
+        {c.DISPLAY && c.DISPLAY.USD && c.DISPLAY.USD.PRICE !== ""
+          ? c.DISPLAY.USD.PRICE
+          : "-"}{" "}
+      </td>
+      <td>
+        {c.RAW && c.RAW.USD && (
+          <p
+            style={{
+              color: c.RAW.USD.CHANGEPCTHOUR >= 0 ? "#00BC00" : "#EE204D",
+            }}
+          >
+            {c.RAW.USD.CHANGEPCTHOUR.toFixed(2)} %
+          </p>
+        )}
+      </td>
+      <td>
+        {c.RAW && c.RAW.USD && (
+          <p
+            style={{
+              color: c.RAW.USD.CHANGEPCTDAY >= 0 ? "#00BC00" : "#EE204D",
+            }}
+          >
+            {c.RAW.USD.CHANGEPCTDAY.toFixed(2)} %
+          </p>
+        )}
+      </td>
+      <td>{c.CoinInfo.Algorithm !== "N/A" ? c.CoinInfo.Algorithm : "-"}</td>
+      <td>{c.CoinInfo.AssetLaunchDate}</td>
+    </tr>
+  );
 }
 
-interface TableProps {
-  data?: CoinProps;
-  checkedCoin?: CoinProps;
-  setCheckedCoin?: (checkedCoin: CoinProps) => void;
-}
-
-function Table({ data, setCheckedCoin }: TableProps) {
+export default function Table({
+  data,
+  isCheck,
+  onClick,
+  selectedList,
+}: {
+  data: DataProps[] | undefined;
+  isCheck?: boolean;
+  onClick?: (coin: DataProps) => void;
+  selectedList?: string[];
+}) {
   if (!data) return <Loading />;
+
+  if (data.length < 1) {
+    return <div>Нет данных.</div>;
+  }
 
   return (
     <div className={styles.Table}>
       <table>
         <thead>
           <tr>
-            <th>
-              <FiEye />
-            </th>
+            {!isCheck && <th>Отсл.</th>}
             <th>#</th>
             <th>Название</th>
             <th>Цена</th>
@@ -57,82 +113,20 @@ function Table({ data, setCheckedCoin }: TableProps) {
         </thead>
 
         <tbody>
-          {data?.Data.map((coin, index) => (
-            <tr key={index}>
-              <td>
-                <button
-                  onClick={() =>
-                    setCheckedCoin &&
-                    setCheckedCoin({
-                      Data: [
-                        {
-                          CoinInfo: coin.CoinInfo,
-                          RAW: coin.RAW,
-                          DISPLAY: coin.DISPLAY,
-                        },
-                      ],
-                    })
-                  }
-                >
-                  +
-                </button>
-              </td>
-              <td>{index + 1}</td>
-              <td className={styles.Title}>
-                <img
-                  src={`https://www.cryptocompare.com${coin.CoinInfo.ImageUrl}`}
-                  alt={coin.CoinInfo.FullName}
-                />
-                <a
-                  href={`https://www.cryptocompare.com${coin.CoinInfo.Url}`}
-                  target="_blank"
-                >
-                  {coin.CoinInfo.FullName}
-                </a>
-              </td>
-              <td>
-                {coin.DISPLAY &&
-                coin.DISPLAY.USD &&
-                coin.DISPLAY.USD.PRICE !== ""
-                  ? coin.DISPLAY.USD.PRICE
-                  : "-"}{" "}
-              </td>
-              <td>
-                {coin.RAW && coin.RAW.USD && (
-                  <p
-                    style={{
-                      color:
-                        coin.RAW.USD.CHANGEPCTHOUR >= 0 ? "#00BC00" : "#EE204D",
-                    }}
-                  >
-                    {coin.RAW.USD.CHANGEPCTHOUR.toFixed(2)} %
-                  </p>
-                )}
-              </td>
-              <td>
-                {coin.RAW && coin.RAW.USD && (
-                  <p
-                    style={{
-                      color:
-                        coin.RAW.USD.CHANGEPCTDAY >= 0 ? "#00BC00" : "#EE204D",
-                    }}
-                  >
-                    {coin.RAW.USD.CHANGEPCTDAY.toFixed(2)} %
-                  </p>
-                )}
-              </td>
-              <td>
-                {coin.CoinInfo.Algorithm !== "N/A"
-                  ? coin.CoinInfo.Algorithm
-                  : "-"}
-              </td>
-              <td>{coin.CoinInfo.AssetLaunchDate}</td>
-            </tr>
+          {data?.map((c, index) => (
+            <Coin
+              c={c}
+              key={index}
+              index={index}
+              onClick={() => onClick && onClick(c)}
+              isCheck={isCheck ?? false}
+              isSelected={
+                selectedList?.includes(c.CoinInfo.FullName) ? true : false
+              }
+            />
           ))}
         </tbody>
       </table>
     </div>
   );
 }
-
-export default Table;

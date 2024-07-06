@@ -15,11 +15,8 @@ function Header() {
         <Link href="/" icon={<FiHome />}>
           Главная
         </Link>
-        <Link href="/table/100" icon={<FiTrendingUp />}>
-          Топ-100
-        </Link>
-        <Link href="/table/check" icon={<FiEye />}>
-          Отслеживаемое
+        <Link href="/tables" icon={<FiTrendingUp />}>
+          Таблицы
         </Link>
       </div>
     </header>

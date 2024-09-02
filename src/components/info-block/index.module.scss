@@ -1,0 +1,35 @@
+.InfoBlock {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.Img {
+  height: 80px;
+  width: 80px;
+  background-color: #d3ffe7;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    color: #00ac4f;
+    font-weight: bold;
+    font-size: 30px;
+  }
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+}
+
+.Title {
+  color: #acacac;
+}
+
+.Description {
+  font-size: 32px;
+  color: black;
+}
